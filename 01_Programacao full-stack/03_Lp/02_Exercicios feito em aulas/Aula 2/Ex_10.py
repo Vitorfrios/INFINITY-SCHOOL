@@ -1,7 +1,9 @@
-print("Quantos anos vc tem")  
-idade = int(input('Digite o valor: '))  
 
-if idade >= 16:  
-    print("Você vota.")  
+
+print("Qque dia")  
+dia = int(input('Digite o valor: '))  
+
+if 1 <= dia <= 5:  
+    print("Você trabalha.")  
 else:  
-    print("Você não vota")
+    print("Você não trabalha")
