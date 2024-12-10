@@ -1,267 +1,162 @@
+# Guia de Python: Condicionais e Operadores
 
-# Aula 2
+## Operadores Aritméticos
 
-Esta é a documentação da 2ª aula. Coloque o conteúdo relacionado a essa aula aqui.
-Aqui está o conteúdo que você forneceu, organizado e formatado em **Markdown** com alguns ajustes para tornar a leitura mais clara e adicionar exemplos completos:
+* **==Adição (==**`+`==): Soma dois números.==
+* \
 
-```markdown
-# Operadores de Comparação e Lógicos em Python
+  ```python
+  resultado = 5 + 3  # 8
+  ```
+* **==Subtração (==**`-`==): Subtrai o segundo número do primeiro.==
 
-### 1. **Igualdade (==)**
+  ```python
+  resultado = 5 - 3  # 2
+  ```
+* **Multiplicação (**`*`): Multiplica dois números.
 
-Verifica se dois valores são iguais. Se forem iguais, retorna `True`; se forem diferentes, retorna `False`.
+  ```python
+  resultado = 5 * 3  # 15
+  ```
+* **Divisão (**`/`): Divide dois números, retornando um número com ponto flutuante.
 
-**Exemplo:**
+  ```python
+  resultado = 5 / 2  # 2.5
+  ```
+* **Resto da Divisão (**`%`): Retorna o restante da divisão inteira.
 
-```python
-a = 5
-b = 5
-print(a == b)  # Saída: True
-```
+  ```python
+  resultado = 5 % 2  # 1
+  ```
+* **Divisão Inteira (**`//`): Retorna o quociente inteiro da divisão.
 
----
+  ```python
+  resultado = 5 // 2  # 2
+  ```
+* **Potenciação (**`**`): Eleva um número a uma potência.
 
-### 2. **Diferença (!=)**
-
-Verifica se dois valores são diferentes. Se forem diferentes, retorna `True`; se forem iguais, retorna `False`.
-
-**Exemplo:**
-
-```python
-a = 5
-b = 6
-print(a != b)  # Saída: True
-```
-
----
-
-### 3. **Maior que (>)**
-
-Verifica se um valor é maior que o outro. Se for maior, retorna `True`; se for menor, retorna `False`.
-
-**Exemplo:**
-
-```python
-a = 5
-b = 3
-print(a > b)  # Saída: True
-
-a = 3
-b = 5
-print(a > b)  # Saída: False
-```
+  ```python
+  resultado = 5 ** 2  # 25
+  ```
 
 ---
 
-### 4. **Menor que (<)**
+## Operadores de Comparação
 
-Verifica se um valor é menor que o outro. Se for menor, retorna `True`; se for maior, retorna `False`.
+Usados para comparar valores, retornam `True` ou `False`.
 
-**Exemplo:**
+* **Igual (**`==`): Verifica se dois valores são iguais.
 
-```python
-a = 3
-b = 5
-print(a < b)  # Saída: True
+  ```python
+  resultado = 5 == 3  # False
+  ```
+* **Diferente (**`!=`): Verifica se dois valores são diferentes.
 
-a = 6
-b = 5
-print(a < b)  # Saída: False
-```
+  ```python
+  resultado = 5 != 3  # True
+  ```
+* **Maior que (**`>`): Verifica se o primeiro valor é maior que o segundo.
 
----
+  ```python
+  resultado = 5 > 3  # True
+  ```
+* **Menor que (**`<`): Verifica se o primeiro valor é menor que o segundo.
 
-### 5. **Maior ou Igual a (>=)**
+  ```python
+  resultado = 5 < 3  # False
+  ```
+* **Maior ou Igual (**`>=`): Verifica se o primeiro valor é maior ou igual ao segundo.
 
-Verifica se um valor é maior ou igual ao outro. Se for maior ou igual, retorna `True`; caso contrário, retorna `False`.
+  ```python
+  resultado = 5 >= 3  # True
+  ```
+* **Menor ou Igual (**`<=`): Verifica se o primeiro valor é menor ou igual ao segundo.
 
-**Exemplo:**
+  ```python
+  resultado = 5 <= 3  # False
+  ```
 
-```python
-a = 5
-b = 5
-print(a >= b)  # Saída: True
+## Operadores Lógicos
 
-a = 3
-b = 5
-print(a >= b)  # Saída: False
-```
+Usados para combinar condições.
 
----
+* **E (**`and`): Retorna `True` se ambas as condições forem verdadeiras.
 
-### 6. **Menor ou Igual a (<=)**
+  ```python
+  resultado = (5 > 3) and (2 < 4)  # True
+  ```
+* **OU (**`or`): Retorna `True` se pelo menos uma das condições for verdadeira.
 
-Verifica se um valor é menor ou igual ao outro. Se for menor ou igual, retorna `True`; caso contrário, retorna `False`.
+  ```python
+  resultado = (5 > 3) or (2 > 4)  # True
+  ```
+* **NÃO (**`not`): Inverte o valor lógico.
 
-**Exemplo:**
+  ```python
+  resultado = not (5 > 3)  # False
+  ```
 
-```python
-a = 3
-b = 5
-print(a <= b)  # Saída: True
+## Operadores `in` e `not in`
 
-a = 6
-b = 5
-print(a <= b)  # Saída: False
-```
+Usados para verificar a existência de um elemento em coleções como strings, listas ou tuplas.
 
----
+* `in`: Verifica se um elemento está presente.
 
-# Operadores Lógicos
+  ```python
+  resultado = "a" in "banana"  # True
+  ```
+* `not in`: Verifica se um elemento não está presente.
 
-### **E (and)**
+  ```python
+  resultado = "x" not in "banana"  # True
+  ```
 
-Retorna `True` se ambos os operandos forem verdadeiros; caso contrário, retorna `False`.
+## Condicionais
 
-**Exemplo:**
+Permitem executar blocos de código com base em condições.
 
-```python
-a = True
-b = False
-print(a and b)  # Saída: False
-```
+* `if`: Executa um bloco se a condição for verdadeira.
 
----
+  ```python
+  if 5 > 3:
+      print("5 é maior que 3")
+  ```
+* `elif`: Avalia outra condição caso a anterior seja falsa.
 
-### **OU (or)**
+  ```python
+  if 5 < 3:
+      print("5 é menor que 3")
+  elif 5 == 3:
+      print("5 é igual a 3")
+  else:
+      print("5 é maior que 3")
+  ```
+* `else`: Executa um bloco se nenhuma das condições anteriores for verdadeira.
 
-Retorna `True` se pelo menos um dos operandos for verdadeiro; caso contrário, retorna `False`.
+  ```python
+  if 5 < 3:
+      print("5 é menor que 3")
+  else:
+      print("5 não é menor que 3")
+  ```
 
-**Exemplo:**
-
-```python
-a = True
-b = False
-print(a or b)  # Saída: True
-```
-
----
-
-### **NÃO (not)**
-
-Inverte o valor de verdadeiro para falso e vice-versa.
-
-**Exemplo:**
-
-```python
-a = True
-print(not a)  # Saída: False
-```
-
----
-
-# Operadores de Membro
-
-### **Operador in**
-
-Verifica se um determinado elemento está presente em uma sequência (como uma lista, tupla, string, etc).
-
-**Sintaxe:**
+## Exemplo Completo
 
 ```python
-elemento in sequencia
-```
+numero = 10
 
-Se o elemento estiver presente na sequência, o operador `in` retorna `True`; caso contrário, retorna `False`.
-
-**Exemplo:**
-
-Verificando em uma string:
-
-```python
-nome = "Python"
-print("P" in nome)  # Saída: True
-print("Java" in nome)  # Saída: False
-```
-
-Verificando em uma lista:
-
-```python
-frutas = ['maçã', 'banana', 'laranja', 'morango']
-print("banana" in frutas)  # Saída: True
-print("uva" in frutas)  # Saída: False
-```
-
----
-
-### **Operador not in**
-
-O operador `not in` é a negação do operador `in`. Ele é utilizado para verificar se um elemento não está presente em uma sequência.
-
-**Sintaxe:**
-
-```python
-elemento not in sequencia
-```
-
-Se o elemento não estiver presente na sequência, o operador `not in` retorna `True`; caso contrário, retorna `False`.
-
-**Exemplo:**
-
-Verificando em uma string:
-
-```python
-nome = "Python"
-print("Java" not in nome)  # Saída: True
-print("P" not in nome)  # Saída: False
-```
-
-Verificando em uma lista:
-
-```python
-frutas = ['maçã', 'banana', 'laranja', 'morango']
-print("uva" not in frutas)  # Saída: True
-print("banana" not in frutas)  # Saída: False
-```
-
----
-
-# Estruturas de Condicional (if/else)
-
-### **Como usar o `if`**
-
-O comando `if` é utilizado para verificar se uma condição é verdadeira. Caso seja, o código dentro do bloco `if` será executado.
-
-**Sintaxe:**
-
-```python
-if condição:
-    # código a ser executado se a condição for verdadeira
-```
-
-**Exemplo:**
-
-Verificação de número positivo:
-
-```python
-numero = int(input("Digite um número: "))
+# Verifica se o número é positivo, negativo ou zero
 if numero > 0:
-    print("O número é positivo.")
+    print("Número positivo")
+elif numero < 0:
+    print("Número negativo")
+else:
+    print("Número é zero")
+
+# Usando operadores aritméticos e lógicos
+if (numero % 2 == 0) and (numero > 5):
+    print("Número é par e maior que 5")
 ```
+
 
 ---
-
-### **Como usar o `if-else`**
-
-O `else` é opcional e é usado para executar um bloco de código caso a condição do `if` seja falsa.
-
-**Sintaxe:**
-
-```python
-if condição:
-    # código a ser executado se a condição for verdadeira
-else:
-    # código a ser executado se a condição for falsa
-```
-
-**Exemplo:**
-
-Verificação de maioridade:
-
-```python
-idade = int(input("Digite sua idade: "))
-if idade >= 18:
-    print("Você é maior de idade.")
-else:
-    print("Você é menor de idade.")
-```
