@@ -2,13 +2,11 @@
 
 ## Operadores Aritméticos
 
-* **==Adição (==**`+`==): Soma dois números.==
-* \
-
-  ```python
+* **Adição (**`+`): Soma dois números.
+* ```python
   resultado = 5 + 3  # 8
   ```
-* **==Subtração (==**`-`==): Subtrai o segundo número do primeiro.==
+* **Subtração (**`-`): Subtrai o segundo número do primeiro.
 
   ```python
   resultado = 5 - 3  # 2
@@ -157,6 +155,5 @@ else:
 if (numero % 2 == 0) and (numero > 5):
     print("Número é par e maior que 5")
 ```
-
 
 ---
