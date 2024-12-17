@@ -28,21 +28,22 @@
 * **Cadastro de Usuário**
 * **Permite cadastro com informações pessoais (nome, idade, gênero, endereço, etc.)**
 * **Criação de conta com credenciais de acesso (e-mail e senha)**
+* ---
 * **Coleta de Dados**
 * **Formulário de inscrição com campos intuitivos para coletar informações socioeconômicas**
 * **Consideração para usuários com pouca familiaridade com tecnologia**
+* ---
 * **Armazenamento de Dados**
 * **Banco de dados seguro e confiável**
 * **Mecanismos de segurança para proteger dados contra acesso não autorizado**
+* ---
 * **Geração de PDF**
 * **Capacidade de gerar arquivo PDF com informações do inscrito**
 * **Formato claro e organizado para impressão ou compartilhamento**
+* ---
 * **Gerenciamento de Inscrições**
 * **Interface para administradores visualizarem, editarem e aprovarem inscrições**
-* **Pesquisa e filtragem de inscrições por critérios específicos**
-
-## Requisitos Não Funcionais
-
+* **Pesquisa e filtragem de inscrições por critérios específicos**Requisitos Não Funcionais
 * **Interface de Usuário Intuitiva**
 * **Fácil utilização considerando falta de familiaridade com dispositivos móveis**
 * **Disponibilidade Offline**
