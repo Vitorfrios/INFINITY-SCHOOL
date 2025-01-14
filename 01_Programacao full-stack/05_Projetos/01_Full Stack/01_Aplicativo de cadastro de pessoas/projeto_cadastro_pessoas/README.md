@@ -37,28 +37,24 @@
 * **Banco de dados seguro e confiável** foi
 * **Mecanismos de segurança para proteger dados contra acesso não autorizado** foi
 * ---
-* **Geração de PDF**
-* **Capacidade de gerar arquivo PDF com informações do inscrito**
-* **Formato claro e organizado para impressão ou compartilhamento** 
+* **Gerenciamento de Inscrições**a fz pg login e 04
+* **Interface para administradores visualizarem, editarem e aprovarem inscrições** 
+* **Pesquisa e filtragem de inscrições por critérios específicos**
 * ---
-* **Gerenciamento de Inscrições**
-* **Interface para administradores visualizarem, editarem e aprovarem inscrições**
-* **Pesquisa e filtragem de inscrições por critérios específicos**Requisitos Não Funcionais
-* **Interface de Usuário Intuitiva**
-* **Fácil utilização considerando falta de familiaridade com dispositivos móveis**
-* **Disponibilidade Offline**
-* **Funcionamento offline com sincronização automática ao conectar à internet**
-* **Compatibilidade**
-* **Compatível com Android e iOS**
-* **Segurança**
-* **Práticas de criptografia e autenticação adequadas**
-* **Escalabilidade**
-* **Projeto para lidar com grande número de inscrições e crescimento futuro**
+* **Geração de PDF** a fz pg 04
+* **Capacidade de gerar arquivo PDF com informações do inscrito** 
+* **Formato claro e organizado para impressão ou compartilhamento** 
 
-## Prazo de Entrega
+## Requisitos Não Funcionais
 
-**60 dias, considerando complexidade dos requisitos e necessidade de testes e ajustes.**
+* **Interface de Usuário Intuitiva**s
+* **Fácil utilização considerando falta de familiaridade com dispositivos móveis**s
+* **Disponibilidade Offline**s
+* **Funcionamento offline com sincronização automática ao conectar à internet**s
+* **Compatibilidade**s
+* **Compatível com Android e iOS**s
+* **Segurança**s
+* **Práticas de criptografia e autenticação adequadas**s
+* **Escalabilidade**s
+* **Projeto para lidar com grande número de inscrições e crescimento futuro**s
 
-## Nota Final
-
-**Este briefing fornece uma visão geral do projeto. Detalhes específicos de design, recursos adicionais e aspectos técnicos devem ser discutidos em reuniões subsequentes.**
