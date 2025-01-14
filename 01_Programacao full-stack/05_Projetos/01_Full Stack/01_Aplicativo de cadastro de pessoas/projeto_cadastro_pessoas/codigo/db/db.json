@@ -1,0 +1,17 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "login": "fefe",
+      "nome": "ef",
+      "email": "fefe@asg.com",
+      "idade": "2",
+      "genero": "Feminino",
+      "endereco": "12",
+      "senha": "1212",
+      "renda": "12121212",
+      "comodos": "12",
+      "acesso_internet": "Sim"
+    }
+  ]
+}
