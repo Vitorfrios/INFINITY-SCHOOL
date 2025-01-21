@@ -19,7 +19,7 @@
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" method="post" onsubmit="loginUser(this)">
                             <div class="container2">
-                                <div class="label">Tempo Otimizado</div>
+                                <img src="../assets/images/DALL·E 2025-01-21 17.02.47 - A logo para um programa social chamado 'Cadastro de Pessoas Carentes'. O design apresenta um círculo com pessoas estilizadas, simbolizando diversidade.webp" alt="logo">
                             </div>
                             <div class="form-group">
                                 <label for="email" class="text-info">Email</label><br>
@@ -74,7 +74,7 @@
                                     function resetLoginForm() {
                                         const formHTML = `
                                             <div class="container2">
-                                                <div class="label">Tempo Otimizado</div>
+                                                <img src="../assets/images/DALL·E 2025-01-21 17.02.47 - A logo para um programa social chamado 'Cadastro de Pessoas Carentes'. O design apresenta um círculo com pessoas estilizadas, simbolizando diversidade.webp" alt="logo">
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="text-info">Email</label><br>
@@ -105,9 +105,12 @@
                             </div>
 
                             <div class="form-group d-flex justify-content-between">
-                                <a href="./02_Cadastro.html"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="border-radius: 10px; border: 2px solid #00A4CC;">Novo usuário</button></a>
-                                <a id="btn-login" class="btn btn-info btn-md" style="border-radius: 10px; border: 2px solid #00A4CC; color: white;" disabled>Login</a>
+                                <a href="./02_Cadastro.html">
+                                    <button type="button" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;">Novo usuário</button>
+                                </a>
+                                <button type="button" id="btn-login" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;" disabled>Login</button>
                             </div>
+                            
                         </form>
                     </div>
                 </div>
