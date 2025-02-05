@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Petshop Melhor Amigo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #34a853;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            margin-bottom: 10px;
+        }
+
+        header .logo h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        header .logo p {
+            font-size: 1.2em;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #hero {
+            background-color: #34a853;
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            margin-top: 20px; /* Adicionando espaço acima da seção */
+        }
+
+
+        #hero .hero-content h2 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        #hero .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #34a853;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #34a853;
+            color: #fff;
+        }
+
+        #informativo {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .info-item .text {
+            width: 45%;
+            padding: 20px;
+        }
+
+        .info-item.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .info-item .text h3 {
+            font-size: 2em;
+            color: #34a853;
+        }
+
+        /* Estilos do carrossel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .carousel-nav button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        footer {
+            background-color: #34a853;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer .footer-content p {
+            margin: 5px 0;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/150" alt="Logo Petshop Melhor Amigo">
+            <h1>Petshop Melhor Amigo</h1>
+            <p>O cuidado que seu pet merece, com todo amor e carinho!</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Bem-vindo ao Petshop "Melhor Amigo"!</h2>
+            <p>Seu pet merece o melhor cuidado e nós estamos aqui para oferecer exatamente isso. Cuidados especiais, produtos de qualidade e muito amor para o seu amigo de quatro patas.</p>
+            <a href="produtos.html" class="btn-primary">Veja nossos Produtos</a>
+        </div>
+    </section>
+
+    <!-- Informativo -->
+    <section id="informativo">
+        <h2>O que fazemos para o seu pet?</h2>
+
+        <!-- Info item 1 com Carrossel -->
+        <div class="info-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="text">
+                <h3>Cuidado de Qualidade</h3>
+                <p>No Petshop "Melhor Amigo", seu pet será tratado como parte da nossa família, com muito carinho e dedicação. A saúde e o bem-estar do seu amigo são nossa prioridade.</p>
+            </div>
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://via.placeholder.com/600x400" alt="Animal feliz">
+                    <img src="https://via.placeholder.com/600x400" alt="Animal feliz 2">
+                    <img src="https://via.placeholder.com/600x400" alt="Animal feliz 3">
+                </div>
+                <div class="carousel-nav">
+                    <button id="prev">❮</button>
+                    <button id="next">❯</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info item 2 com Carrossel -->
+        <div class="info-item reverse" data-aos="fade-up" data-aos-delay="400">
+            <div class="text">
+                <h3>Serviços de Tosa Profissional</h3>
+                <p>Oferecemos tosas de todas as raças, com cuidados especiais e produtos adequados para o bem-estar do seu pet. Os tosadores são experientes e utilizam técnicas modernas para garantir a saúde e beleza do seu pet.</p>
+            </div>
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://via.placeholder.com/600x400" alt="Tosa profissional 1">
+                    <img src="https://via.placeholder.com/600x400" alt="Tosa profissional 2">
+                    <img src="https://via.placeholder.com/600x400" alt="Tosa profissional 3">
+                </div>
+                <div class="carousel-nav">
+                    <button id="prev2">❮</button>
+                    <button id="next2">❯</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info item 3 com Carrossel -->
+        <div class="info-item" data-aos="fade-up" data-aos-delay="600">
+            <div class="text">
+                <h3>Rações Premium</h3>
+                <p>Oferecemos rações de alta qualidade, personalizadas para as necessidades específicas de cada pet. As rações são formuladas com ingredientes naturais e nutrientes essenciais para a saúde do seu amigo peludo.</p>
+            </div>
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://via.placeholder.com/600x400" alt="Rações para pets 1">
+                    <img src="https://via.placeholder.com/600x400" alt="Rações para pets 2">
+                    <img src="https://via.placeholder.com/600x400" alt="Rações para pets 3">
+                </div>
+                <div class="carousel-nav">
+                    <button id="prev3">❮</button>
+                    <button id="next3">❯</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info item 4 com Carrossel -->
+        <div class="info-item reverse" data-aos="fade-up" data-aos-delay="800">
+            <div class="text">
+                <h3>Promoções Especiais</h3>
+                <p>Aproveite nossas promoções mensais e descontos especiais! Temos pacotes promocionais de banho e tosa, além de ofertas imperdíveis em produtos selecionados. Não perca!</p>
+            </div>
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://via.placeholder.com/600x400" alt="Promoção especial 1">
+                    <img src="https://via.placeholder.com/600x400" alt="Promoção especial 2">
+                    <img src="https://via.placeholder.com/600x400" alt="Promoção especial 3">
+                </div>
+                <div class="carousel-nav">
+                    <button id="prev4">❮</button>
+                    <button id="next4">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Petshop Melhor Amigo - Todos os direitos reservados.</p>
+            <ul>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <p>Siga-nos nas redes sociais!</p>
+        </div>
+    </footer>
+
+    <!-- AOS Library JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            duration: 500,
+            easing: 'ease-in-out',
+            once: true,
+        });
+
+        // Função para controle do carrossel
+        function initializeCarousel(carouselId) {
+            const carousel = document.querySelector(carouselId);
+            const images = carousel.querySelector('.carousel-images');
+            const prevBtn = carousel.querySelector('.carousel-nav #prev');
+            const nextBtn = carousel.querySelector('.carousel-nav #next');
+            let index = 0;
+
+            const moveCarousel = (direction) => {
+                index += direction;
+                if (index < 0) index = 2;
+                if (index > 2) index = 0;
+                images.style.transform = `translateX(-${index * 100}%)`;
+            };
+
+            prevBtn.addEventListener('click', () => moveCarousel(-1));
+            nextBtn.addEventListener('click', () => moveCarousel(1));
+
+            // Controle automático do carrossel
+            setInterval(() => moveCarousel(1), 3000);
+        }
+
+        // Inicializar todos os carrosséis (modificado para todos)
+        document.querySelectorAll('.info-item').forEach((item, index) => {
+            initializeCarousel(`#informativo .info-item:nth-child(${index + 1}) .carousel`);
+        });
+    </script>
+</body>
+</html>
