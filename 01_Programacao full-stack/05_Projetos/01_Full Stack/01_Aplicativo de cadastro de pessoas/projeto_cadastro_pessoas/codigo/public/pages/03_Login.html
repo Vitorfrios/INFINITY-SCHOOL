@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/03_Login.css">
+</head>
+
+<body>
+    <div id="login">
+        <h3 class="text-center text-white pt-5"></h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" method="post" onsubmit="loginUser(this)">
+                            <div class="container2">
+                                <img src="../assets/images/DALL·E 2025-01-21 17.02.47 - A logo para um programa social chamado 'Cadastro de Pessoas Carentes'. O design apresenta um círculo com pessoas estilizadas, simbolizando diversidade.webp" alt="logo">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-info">Email</label><br>
+                                <input type="email" name="email" id="email" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC;">
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="password" class="text-info">Senha</label><br>
+                                <input type="password" name="password" id="password" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC; padding-right: 30px;">
+                                <i id="toggle-password" class="fa fa-eye"></i>
+                                
+                                <script>
+                                    const passwordField = document.getElementById('password');
+                                    const togglePasswordIcon = document.getElementById('toggle-password');
+
+                                    togglePasswordIcon.addEventListener('click', function() {
+                                        const type = passwordField.type === 'password' ? 'text' : 'password';
+                                        passwordField.type = type;
+
+                                        this.classList.toggle('fa-eye');
+                                        this.classList.toggle('fa-eye-slash');
+                                    });
+
+                                    // Função para exibir o formulário de recuperação de senha
+                                    function esqueciSenha() {
+                                        // Exibe o formulário de email para recuperação de senha
+                                        const formHTML = `
+                                            <div class="form-group">
+                                                <label for="recovery-email" class="text-info">Digite seu Email para recuperação</label><br>
+                                                <input type="email" id="recovery-email" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC;">
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;" onclick="enviarInstrucoes()">Enviar</button>
+                                            </div>
+                                        `;
+                                        const container = document.getElementById('login-box');
+                                        container.innerHTML = formHTML;
+                                    }
+
+                                    // Função para enviar instruções de recuperação de senha
+                                    function enviarInstrucoes() {
+                                        const recoveryEmail = document.getElementById('recovery-email').value;
+                                        if (recoveryEmail) {
+                                            alert('Instruções enviadas para o seu email: ' + recoveryEmail);
+                                            // Retorna ao formulário de login original
+                                            setTimeout(resetLoginForm, 1000);  // Atraso de 2 segundos para exibir a mensagem antes de voltar ao login
+                                        } else {
+                                            alert('Por favor, insira um email válido.');
+                                        }
+                                    }
+
+                                    // Função para resetar o formulário de login
+                                    function resetLoginForm() {
+                                        const formHTML = `
+                                            <div class="container2">
+                                                <img src="../assets/images/DALL·E 2025-01-21 17.02.47 - A logo para um programa social chamado 'Cadastro de Pessoas Carentes'. O design apresenta um círculo com pessoas estilizadas, simbolizando diversidade.webp" alt="logo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="text-info">Email</label><br>
+                                                <input type="email" name="email" id="email" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC;">
+                                            </div>
+                                            <div class="form-group" style="position: relative;">
+                                                <label for="password" class="text-info">Senha</label><br>
+                                                <input type="password" name="password" id="password" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC; padding-right: 30px;">
+                                                <i id="toggle-password" class="fa fa-eye"></i>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-link" style="border-radius: 10px; color: #00A4CC; text-decoration: none;" onclick="esqueciSenha()">Esqueci a Senha</button>
+                                            </div>
+                                            <div class="form-group d-flex justify-content-between">
+                                                <a href="./02_Cadastro.html"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="border-radius: 10px; border: 2px solid #00A4CC;">Novo usuário</button></a>
+                                                <a id="btn-login" class="btn btn-info btn-md" style="border-radius: 10px; border: 2px solid #00A4CC; color: white;" disabled>Login</a>
+                                            </div>
+                                        `;
+                                        const container = document.getElementById('login-box');
+                                        container.innerHTML = formHTML;
+                                    }
+                                </script>
+                            </div>
+
+                            <!-- Novo botão de Esqueci a Senha -->
+                            <div class="form-group">
+                                <button type="button" class="btn btn-link" style="border-radius: 10px; color: #00A4CC; text-decoration: none;" onclick="esqueciSenha()">Esqueci a Senha</button>
+                            </div>
+
+                            <div class="form-group d-flex justify-content-between">
+                                <a href="./02_Cadastro.html">
+                                    <button type="button" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;">Novo usuário</button>
+                                </a>
+                                <button type="button" id="btn-login" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;" disabled>Login</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <script src="../assets/js/03_Login.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+</body>
+
+</html>
