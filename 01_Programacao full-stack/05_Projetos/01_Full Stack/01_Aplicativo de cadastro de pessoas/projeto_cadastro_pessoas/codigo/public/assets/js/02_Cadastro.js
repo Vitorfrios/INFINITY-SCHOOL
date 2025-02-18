@@ -14,7 +14,7 @@ async function getNextUserId() {
     return lastUserId + 1;
 }
 
-// Função para salvar um novo usuário
+// Função para salvar usuário, gerar PDF e limpar inputs
 async function salvaLogin(event) {
     event.preventDefault();
 
@@ -36,7 +36,7 @@ async function salvaLogin(event) {
         return;
     }
 
-    const nextId = await getNextUserId(); 
+    const nextId = await getNextUserId();
 
     const usuario = {
         id: nextId,
@@ -52,20 +52,46 @@ async function salvaLogin(event) {
         acesso_internet,
     };
 
-    fetch(SERVER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(usuario),
-    })
-    .then(() => {
-        alert('Usuário cadastrado com sucesso!');
+    // Salvar no servidor
+    try {
+        await fetch(SERVER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuario),
+        });
+
+        // Gerar PDF
+        gerarPDF(usuario);
+
+        // Limpar campos
         document.getElementById('login-form').reset();
-    })
-    .catch(error => {
+
+        alert('Usuário cadastrado com sucesso!');
+    } catch (error) {
         alert('Erro ao cadastrar usuário: ' + error);
-    });
+    }
 }
 
+// Função para gerar o PDF
+function gerarPDF(usuario) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-// Adiciona o evento ao formulário para salvar ao clicar no botão de cadastrar
+    doc.setFont("helvetica", "bold");
+    doc.text("Cadastro de Usuário", 20, 20);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Nome: ${usuario.nome}`, 20, 40);
+    doc.text(`Email: ${usuario.email}`, 20, 50);
+    doc.text(`Idade: ${usuario.idade}`, 20, 60);
+    doc.text(`Gênero: ${usuario.genero}`, 20, 70);
+    doc.text(`Endereço: ${usuario.endereco}`, 20, 80);
+    doc.text(`Renda Familiar: ${usuario.renda}`, 20, 90);
+    doc.text(`Número de Cômodos: ${usuario.comodos}`, 20, 100);
+    doc.text(`Acesso à Internet: ${usuario.acesso_internet}`, 20, 110);
+
+    // Salvar o PDF
+    doc.save(`Cadastro_${usuario.nome}.pdf`);
+}
+
+// Adiciona o evento ao formulário
 document.getElementById('login-form').addEventListener('submit', salvaLogin);

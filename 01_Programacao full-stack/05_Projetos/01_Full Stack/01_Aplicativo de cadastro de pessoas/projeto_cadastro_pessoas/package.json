@@ -9,7 +9,7 @@
     "start": "npx concurrently \"npx live-server codigo --open=/public/pages/01_Inicio_logo.html\" \"npm run server1\" \"npm run server2\""
   },
   "keywords": [],
-  "author": "Rommel Vieira Carneiro",
+  "author": "Vitor de Freitas Rios",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",

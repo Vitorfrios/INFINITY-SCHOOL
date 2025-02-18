@@ -5,6 +5,7 @@ npm start
 
 /* Body */
 body {
+    
     font-family: Arial, sans-serif;
     background-color: #E8F0F2;
     margin: 0;
@@ -16,63 +17,8 @@ body {
     align-items: flex-start;
 }
 
-/* Sidebar */
-.sidebar {
-    width: auto; 
-    min-width: 40vh;
-    background-color: #000;
-    color: #fff;
-    height: auto;
-    position: relative;
-    left: 0;
-    padding-top: 10px;
-    border-radius: 30px;
-    margin-left: 10px;
-    margin-top: 10px;
-    min-height: 96vh; 
-
-}
-
-.sidebar h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 30px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    padding: 0.3em 1px;
-}
-
-.sidebar ul li.active a {
-    color: #03d9ff;
-    padding-left: 15px;
-}
-
-.sidebar ul li {
-    padding: 0.5em 1em;
-    font-size: 1.41rem;
-}
-
-.sidebar ul li i {
-    margin-right: 10px;
-}
-
-.sidebar ul li:hover {
-    background-color: #333;
-    cursor: pointer;
-}
-
 /* Main Content */
 .main-content {
-    margin-right: 25px;
     padding: 10px;
     flex: 1;
     height: 180px;
@@ -89,8 +35,8 @@ body {
 .profile-container {
     border-radius: 10px;
     padding: 10px;
-    margin-top: 50px;
-    margin-left: 60px;
+    margin-left: 25em;
+    margin-right: 25em;
 }
 
 .profile-header {
@@ -100,7 +46,8 @@ body {
     text-align: center;
     border-radius: 30px;
     font-size: 24px;
-
+    margin-left: 25em;
+    margin-right: 25em;
 }
 
 .profile-item {
@@ -123,20 +70,22 @@ body {
     width: 300px;
     height: 20px;
     text-align: center;
-    font-size:25px ;
+    font-size: 25px;
     display: flex;
     align-content: center;
     justify-content: center;
     align-items: center;
 }
-.profile-itemNot{
+
+.profile-itemNot {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 30px 0;
     font-size: 30px;
 }
-.profile-itemNot span{
+
+.profile-itemNot span {
     background-color: #76cad8;
     border: 3px solid #00A4CC;
     padding: 10px 20px;
@@ -144,17 +93,10 @@ body {
     width: 300px;
     height: 20px;
     text-align: center;
-    font-size:25px ;
+    font-size: 25px;
 }
 
-.profile-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 30px 0;
-    font-size: 30px;
-}
-.profile-item button{
+.profile-item button {
     background-color: #76cad8;
     border-radius: 30px;
     width: 300px;
@@ -167,19 +109,18 @@ body {
     justify-content: center;
     align-items: center;
 }
-.profile-itemBtn{
+
+.profile-itemBtn {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 30px 0;
     font-size: 30px;
-    
 }
 
 .profile-itemBtn button {
     background-color: #76cad8;
     border: 2px solid #00A4CC;
-
     border-radius: 30px;
     width: 300px;
     height: 30px;
@@ -191,16 +132,18 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .btn {
     display: flex;
-    flex-direction: column; 
-    gap: 10px; 
+    flex-direction: column;
+    gap: 10px;
 }
 
 .btn button {
     padding: 8px 12px;
     cursor: pointer;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -239,7 +182,6 @@ body {
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
-    
 }
 
 .form-group-N {
@@ -247,13 +189,14 @@ body {
     align-items: center;
     margin-bottom: 20px;
     width: 100%;
-
 }
+
 .form-group-N label {
     font-size: 25px;
     margin-right: 0;
     flex: 1;
 }
+
 .form-group-N input {
     border: none;
     border-bottom: 2px solid #00BFFF;
@@ -266,20 +209,22 @@ body {
     padding-right: 0;
     font-size: 24px;
 }
+
 .form-group-N input:focus {
-    background-color: #E8F0F2; 
-    border-color: #00BFFF; 
-    box-shadow: none; 
+    background-color: #E8F0F2;
+    border-color: #00BFFF;
+    box-shadow: none;
 }
+
 .form-group-N .star {
     color: #00BFFF;
     font-size: 20px;
-    margin-left:0;
+    margin-left: 0;
     position: relative;
     top: 11.5px;
 }
 
-#save-changes, #save-password{
+#save-changes, #save-password {
     background-color: #00A4CC;
     color: white;
     padding: 10px;
@@ -290,86 +235,39 @@ body {
     font-size: 20px;
 }
 
-#save-changes:hover,#save-password:hover {
+#save-changes:hover, #save-password:hover {
     background-color: #007b8b;
 }
+
 .form-group-N .starS {
     color: #00BFFF;
     font-size: 20px;
-    margin-left:0;
+    margin-left: 0;
     position: relative;
     top: 18px;
 }
+
 #toggle-password {
     position: absolute;
     cursor: pointer;
 }
 
-
-/* Right Content */
-.right-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-right: 10px;
-    gap: 1rem;
-}
-
-/* Profile */
-.right-content .profile {
-    display: flex;
-    align-items: center;
-    border: 2px solid #00A4CC;
-    border-radius: 30px;
-    margin-top: 10px;
-
-}
-
-.right-content .name,
-.right-content .profile img {
-    margin: 2px;
-    margin-left: 40px;
-}
-
-.right-content .profile img {
-    border-radius: 60%;
-    width: 40px;
-    height: 40px;
-}
-
-.right-content .profile a {
-    color: #000000;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-}
-
-
-
-
 /* Responsividade */
 @media (max-width: 1024px) {
     .sidebar {
-        width: auto; min-width: 40vh;
+        width: auto;
+        min-width: 40vh;
     }
 
     .main-content {
         margin-left: 225px;
     }
-
-    .right-content
-
-    
-        {
-        width: 95%;
-    }
 }
 
 @media (max-width: 768px) {
     .sidebar {
-        width: auto; min-width: 40vh;
+        width: auto;
+        min-width: 40vh;
         height: auto;
         position: relative;
     }
@@ -377,12 +275,5 @@ body {
     .main-content {
         margin-left: 0;
         margin-right: 0;
-    }
-
-    .right-content
-
-    
-        {
-        width: 95%;
     }
 }
