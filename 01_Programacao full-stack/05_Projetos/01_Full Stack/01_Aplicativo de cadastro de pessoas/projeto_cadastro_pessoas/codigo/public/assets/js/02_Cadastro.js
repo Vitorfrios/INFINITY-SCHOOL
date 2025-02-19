@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
             renda,
             comodos,
             acesso_internet,
-            cpf, // Adicionando CPF ao objeto
-            dataNascimento // Adicionando Data de Nascimento ao objeto
+            cpf, 
+            dataNascimento 
         };
     
         try {
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
         doc.text(`Renda Familiar: ${usuario.renda}`, 20, 90);
         doc.text(`Número de Cômodos: ${usuario.comodos}`, 20, 100);
         doc.text(`Acesso à Internet: ${usuario.acesso_internet}`, 20, 110);
-        doc.text(`CPF: ${usuario.cpf}`, 20, 120); // Adicionando CPF no PDF
-        doc.text(`Data de Nascimento: ${usuario.dataNascimento}`, 20, 130); // Adicionando Data de Nascimento no PDF
+        doc.text(`CPF: ${usuario.cpf}`, 20, 120); 
+        doc.text(`Data de Nascimento: ${usuario.dataNascimento}`, 20, 130); 
 
         doc.save(`Cadastro_${usuario.nome}.pdf`);
     }

@@ -63,8 +63,8 @@
                                         const recoveryEmail = document.getElementById('recovery-email').value;
                                         if (recoveryEmail) {
                                             alert('Instruções enviadas para o seu email: ' + recoveryEmail);
-                                            // Retorna ao formulário de login original
-                                            setTimeout(resetLoginForm, 1000);  // Atraso de 2 segundos para exibir a mensagem antes de voltar ao login
+                                           
+                                            setTimeout(resetLoginForm, 1000); 
                                         } else {
                                             alert('Por favor, insira um email válido.');
                                         }
@@ -74,7 +74,7 @@
                                     function resetLoginForm() {
                                         const formHTML = `
                                             <div class="container2">
-                                                <img src="../assets/images/DALL·E 2025-01-21 17.02.47 - A logo para um programa social chamado 'Cadastro de Pessoas Carentes'. O design apresenta um círculo com pessoas estilizadas, simbolizando diversidade.webp" alt="logo">
+                                                <img src="../assets/images/logo.png" alt="logo">
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="text-info">Email</label><br>
@@ -99,7 +99,7 @@
                                 </script>
                             </div>
 
-                            <!-- Novo botão de Esqueci a Senha -->
+                            <!--Botão de Esqueci a Senha -->
                             <div class="form-group">
                                 <button type="button" class="btn btn-link" style="border-radius: 10px; color: #00A4CC; text-decoration: none;" onclick="esqueciSenha()">Esqueci a Senha</button>
                             </div>

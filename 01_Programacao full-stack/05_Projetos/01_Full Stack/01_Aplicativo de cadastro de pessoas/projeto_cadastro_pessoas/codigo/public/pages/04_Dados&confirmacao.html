@@ -20,8 +20,12 @@ npm start
 <body>
 
     <div class="main-content">
-        <div class="profile-header">Dados do Usuário Cadastro-<span id="user-name-placeholder"></span></div>
-
+        <div class="profile-header">
+            Dados do Usuário Cadastrado - <span id="user-name-placeholder"></span>
+            <button class="sair-btn" onclick="sair()">Sair</button>
+        </div>
+        
+        
         <div class="profile-container">
             <div class="profile-item">
                 <div>Nome Completo</div>
@@ -37,11 +41,11 @@ npm start
             </div>
             <div class="profile-item">
                 <div>CPF</div>
-                <span id="cpf"></span> <!-- Novo campo de CPF -->
+                <span id="cpf"></span> 
             </div>
             <div class="profile-item">
                 <div>Data de Nascimento</div>
-                <span id="data_nascimento"></span> <!-- Novo campo de Data de Nascimento -->
+                <span id="data_nascimento"></span> 
             </div>
             
             <div class="profile-item">
@@ -100,7 +104,7 @@ npm start
                     </div>
                     <div class="form-group-N">
                         <label>CPF</label>
-                        <input type="text" id="edit-cpf"> <!-- Novo campo de CPF -->
+                        <input type="text" id="edit-cpf"> 
                     </div>
                     
                     <div class="form-group-N">
@@ -180,7 +184,7 @@ npm start
                     }
                 
                     .password-container input {
-                        padding-right: 40px; /* Espaço para o ícone de olho */
+                        padding-right: 40px; 
                     }
                 
                     .password-container i {

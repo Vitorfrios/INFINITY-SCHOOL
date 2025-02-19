@@ -8,7 +8,7 @@ body {
     background: linear-gradient(45deg, #78aba1, #16709a, #4ad0e2);
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
-    overflow: auto; /* Permitir rolagem quando necessário */
+    overflow: auto; 
 }
 
 /* Animação de fundo */
@@ -70,24 +70,24 @@ h3 {
 /* Estilo dos campos de entrada */
 .form-group-N {
     display: flex;
-    flex-direction: column; /* Alterado para coluna */
+    flex-direction: column; 
     margin-bottom: 20px;
     animation: fadeInAll 1.5s ease-out;
 }
 
 .form-group-N label {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 5px;
     color: #333;
 }
 
 .form-group-N input,
 .form-group-N select {
-    width: 100%; /* Todos os campos ocupam 100% da largura */
+    width: 100%; 
     padding: 12px 15px;
     border: 2px solid #00BFFF;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 18px;
     transition: all 0.3s ease;
     background-color: #f9f9f9;
     color: #333;
@@ -163,11 +163,11 @@ select.form-control:not([size]):not([multiple]) {
 hr {
     color: rgb(0, 162, 255);
     display: block;
-    width: 100%; /* Ajuste a largura para que seja visível */
+    width: 100%; 
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-    border-style: solid; /* Mudando para solid */
+    border-style: solid; 
     border-width: 1px;
 }
 

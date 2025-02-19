@@ -42,7 +42,32 @@ body {
     font-size: 28px;
     margin-left: 10%;
     margin-right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
+
+.sair-btn {
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s;
+}
+
+.sair-btn:hover {
+    background-color: #99003b;
+}
+
+
 
 .profile-item {
     display: flex;
@@ -139,6 +164,7 @@ body {
 }
 
 .modal {
+    display: none; 
     position: fixed;
     z-index: 1;
     left: 0;
@@ -149,7 +175,6 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-    display: flex; /* Altere para flex */
 }
 
 .modal-content {
@@ -160,9 +185,8 @@ body {
     width: 600px;
     display: flex;
     flex-direction: column;
-    /* Adicione estas linhas para centralizar o conteúdo */
-    margin: auto; /* Centraliza horizontalmente */
-    max-width: 90%; /* Para responsividade */
+    margin: auto; 
+    max-width: 90%;
 }
 
 .modal-header {
@@ -259,7 +283,6 @@ body {
     position: absolute;
     cursor: pointer;
 }
-
 
 
 /* Responsividade */

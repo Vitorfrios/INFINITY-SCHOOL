@@ -60,13 +60,13 @@
             </div>
         
             <script>
-                // Inicialize o Cleave.js para formatar o CPF
+                // Formatação cpf
                 new Cleave('#txt_cpf', {
-                    blocks: [3, 3, 3, 2], // Formato do CPF: 3 dígitos, 3 dígitos, 3 dígitos, 2 dígitos
-                    delimiter: '.', // Delimitador entre os blocos
-                    numericOnly: true, // Aceita apenas números
+                    blocks: [3, 3, 3, 2], 
+                    delimiter: '.', 
+                    numericOnly: true, 
                     onValueChanged: function (e) {
-                        // Remove o último caractere se for um delimitador
+                        
                         if (e.target.value.endsWith('.') || e.target.value.endsWith('-')) {
                             e.target.value = e.target.value.slice(0, -1);
                         }
@@ -74,7 +74,6 @@
                 });
             </script>
 
-            <!-- Novo campo de Data de Nascimento -->
             <div class="form-group-N">
                 <label for="txt_dtnasc" class="text-info">Data de Nascimento</label>
                 <input type="date" name="txt_dtnasc" id="txt_dtnasc" class="form-control" required>
@@ -89,17 +88,15 @@
                 <input type="text" name="txt_renda" id="txt_renda" class="form-control" placeholder="Digite a renda mensal da família" oninput="formatarMoeda(this)" required>
 
                 <script>
+                    // Formatação em BRL
                     function formatarMoeda(campo) {
-                        // Remove tudo que não for número
                         let valor = campo.value.replace(/\D/g, '');
                 
-                        // Adiciona a formatação de moeda
                         valor = (valor / 100).toLocaleString('pt-BR', {
                             style: 'currency',
                             currency: 'BRL'
                         });
                 
-                        // Atualiza o valor do campo
                         campo.value = valor;
                     }
                 </script>               

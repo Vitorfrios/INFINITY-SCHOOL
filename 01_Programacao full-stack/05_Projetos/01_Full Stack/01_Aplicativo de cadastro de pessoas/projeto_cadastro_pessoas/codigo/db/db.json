@@ -2,33 +2,33 @@
   "usuarios": [
     {
       "id": 1,
-      "nome": "vitor",
-      "email": "w@gmail.com",
-      "idade": "12",
-      "genero": "Masculino",
-      "endereco": "tobias",
-      "senha": "12",
-      "renda": "R$ 1.200,00",
-      "comodos": "10",
+      "nome": "NOME TESTE1",
+      "email": "TESTE@GMAIL.COM",
+      "idade": "122",
+      "genero": "Feminino",
+      "endereco": "ENDEREÇO TESTE",
+      "senha": "11",
+      "renda": "R$ 1.234,45",
+      "comodos": "1",
       "acesso_internet": "Não",
-      "cpf": "131.123.123.12",
-      "dataNascimento": "2005-09-04"
+      "cpf": "123.456.789.00",
+      "dataNascimento": "2003-01-02"
     }
   ],
   "usuario_logado": [
     {
       "id": 1,
-      "nome": "vitor",
-      "email": "w@gmail.com",
-      "idade": "12",
-      "genero": "Masculino",
-      "endereco": "tobias",
-      "senha": "12",
-      "renda": "R$ 1.200,00",
-      "comodos": "10",
+      "nome": "NOME TESTE1",
+      "email": "TESTE@GMAIL.COM",
+      "idade": "122",
+      "genero": "Feminino",
+      "endereco": "ENDEREÇO TESTE",
+      "senha": "11",
+      "renda": "R$ 1.234,45",
+      "comodos": "1",
       "acesso_internet": "Não",
-      "cpf": "131.123.123.12",
-      "dataNascimento": "2005-09-04"
+      "cpf": "123.456.789.00",
+      "dataNascimento": "2003-01-02"
     }
   ]
 }

@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    // Preenchendo os dados na tela
     atualizarExibicao(usuarioLogado);
 
     // MODAL DE EDIÇÃO DE PERFIL
@@ -19,12 +18,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnClose = document.getElementById('close-edit-form');
     const btnSave = document.getElementById('save-changes');
 
-    // Preenchendo os campos do modal com os dados atuais
     btnEdit.addEventListener('click', () => preencherModal(usuarioLogado));
 
-    // Fechar modal
     btnClose.addEventListener('click', () => {
         modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
     });
 
     // Salvar alterações e atualizar servidor
@@ -36,7 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     
         alert('Dados atualizados com sucesso!');
         
-        // Atualiza os dados na tela sem precisar recarregar a página
         atualizarExibicao(usuarioAtualizado);
     });
 
@@ -56,11 +58,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('password-modal').style.display = 'none';
     });
 
-    // DOWNLOAD DOS DADOS EM PDF (Apenas gera um arquivo .txt como exemplo)
     document.getElementById('dow-profile').addEventListener('click', () => baixarDados(usuarioLogado));
 });
 
-// 📌 Obtém os dados do usuário logado
+// Obtém os dados do usuário logado
 async function obterUsuarioLogado() {
     try {
         const response = await fetch(LOGADO_URL);
@@ -72,7 +73,7 @@ async function obterUsuarioLogado() {
     }
 }
 
-// 📌 Atualiza os dados do usuário no servidor
+// Atualiza os dados do usuário no servidor
 function atualizarExibicao(usuario) {
     if (!usuario) {
         alert('Erro: Usuário não encontrado.');
@@ -89,13 +90,11 @@ function atualizarExibicao(usuario) {
     document.getElementById('acesso_internet').textContent = usuario.acesso_internet;
     document.getElementById('cpf').textContent = usuario.cpf;
     
-    // Exibindo a data de nascimento no formato correto
     const dataNascimento = new Date(usuario.dataNascimento);
     const dataFormatada = dataNascimento.toLocaleDateString('pt-BR');
     document.getElementById('data_nascimento').textContent = dataFormatada;
     document.getElementById('user-name-placeholder').textContent = usuario.nome;
 
-    // Atualiza o título da página
     document.title = `Dados do Usuário ${usuario.nome}`;
 }
 
@@ -112,9 +111,8 @@ function preencherModal(usuario) {
     document.getElementById('edit-comodos').value = usuario.comodos;
     document.getElementById('edit-cpf').value = usuario.cpf;
 
-    // Preenchendo o campo de data de nascimento com o valor correto
     const dataNascimento = new Date(usuario.dataNascimento);
-    const dataFormatada = dataNascimento.toISOString().split('T')[0]; // Formato yyyy-mm-dd
+    const dataFormatada = dataNascimento.toISOString().split('T')[0]; 
     document.getElementById('edit-data-nascimento').value = dataFormatada;
 
     document.getElementById('txt_acesso_internet').value = usuario.acesso_internet;
@@ -133,15 +131,14 @@ function obterDadosModal() {
         renda: document.getElementById('edit-renda').value,
         comodos: document.getElementById('edit-comodos').value,
         cpf: document.getElementById('edit-cpf').value,
-        dataNascimento: document.getElementById('edit-data-nascimento').value, // Correção aqui para usar o campo correto
+        dataNascimento: document.getElementById('edit-data-nascimento').value, 
         acesso_internet: document.getElementById('txt_acesso_internet').value
     };
 }
 
-// 📌 Atualiza os dados do usuário no servidor
+// Atualiza os dados do usuário no servidor
 async function atualizarUsuario(usuario) {
     try {
-        // Atualiza em "usuarios"
         const responseUsuarios = await fetch(`${SERVER_URL}/${usuario.id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -152,7 +149,6 @@ async function atualizarUsuario(usuario) {
             throw new Error('Erro ao atualizar em usuarios.');
         }
 
-        // Atualiza em "usuario_logado"
         const responseLogado = await fetch(`${LOGADO_URL}/${usuario.id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -194,15 +190,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordField = document.getElementById('new-password');
     const togglePasswordIcon = document.getElementById('toggle-password');
 
-    // Abrir modal de senha e preencher o campo com a senha atual
+    
     btnOpenPasswordModal.addEventListener('click', () => {
         passwordField.value = usuarioLogado.senha || ''; // Exibe a senha salva
         passwordModal.style.display = 'block';
     });
 
-    // Fechar modal de senha
+    
     btnClosePasswordModal.addEventListener('click', () => {
         passwordModal.style.display = 'none';
+    });
+
+    
+    window.addEventListener('click', (event) => {
+        if (event.target === passwordModal) {
+            passwordModal.style.display = 'none';
+        }
     });
 
     // Salvar nova senha
@@ -214,18 +217,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Atualiza os dados do usuário logado
+        
         usuarioLogado.senha = novaSenha;
         localStorage.setItem('usuario_logado', JSON.stringify(usuarioLogado));
 
-        // Atualiza a senha no array de usuários no localStorage
+        
         let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
         usuarios = usuarios.map(user =>
             user.id === usuarioLogado.id ? { ...user, senha: novaSenha } : user
         );
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-        // Atualiza no servidor (JSON Server)
+        
         try {
             await fetch(`http://localhost:3000/usuarios/${usuarioLogado.id}`, {
                 method: 'PATCH', // PATCH altera apenas um campo específico
@@ -239,10 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Erro ao salvar a nova senha.');
         }
     });
-
 });
 
-// 📌 Baixar os dados do usuário em um arquivo PDF
+
+// Baixar os dados do usuário em um arquivo PDF
 function baixarDados(usuario) {
     const { jsPDF } = window.jspdf; 
     const doc = new jsPDF();
@@ -255,11 +258,11 @@ function baixarDados(usuario) {
     doc.setFontSize(12);
     let linha = 40;
 
-    // Formatando a data de nascimento corretamente
+    
     const dataNascimento = new Date(usuario.dataNascimento);
-    const dataFormatada = dataNascimento.toLocaleDateString('pt-BR'); // Formato dd/mm/aaaa
+    const dataFormatada = dataNascimento.toLocaleDateString('pt-BR'); 
 
-    // Alterei a ordem dos campos conforme solicitado
+    
     const dados = [
         `Nome Completo: ${usuario.nome}`,
         `E-mail: ${usuario.email}`,
@@ -273,17 +276,25 @@ function baixarDados(usuario) {
         `Acesso à Internet: ${usuario.acesso_internet}`,
     ];
 
-    // Adicionando todos os dados no PDF
+    
     dados.forEach((dado) => {
         doc.text(dado, 20, linha);
         linha += 10;
     });
 
-    // Nome do arquivo baseado no nome do usuário
+    
     const nomeArquivo = `Dados do Usuário_${usuario.nome}.pdf`;
 
-    // Salvando o arquivo com o nome personalizado
+    
     doc.save(nomeArquivo);
+}
+
+
+function sair() {
+    alert('Você saiu da conta!');
+    localStorage.removeItem("usuario_logado");
+
+    window.location.href = "01_Inicio_logo.html";    
 }
 
 
