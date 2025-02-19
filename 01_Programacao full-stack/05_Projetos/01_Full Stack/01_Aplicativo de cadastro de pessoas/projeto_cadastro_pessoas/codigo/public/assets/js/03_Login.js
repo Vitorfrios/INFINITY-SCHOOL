@@ -32,21 +32,20 @@ async function salvarUsuarioLogado(usuario) {
     const usuarioLogadoAtual = await obterUsuarioLogado();
 
     if (usuarioLogadoAtual) {
-        // Atualizar usuário logado existente
+        // Excluir usuário logado existente
         await fetch(`${LOGADO_URL}/${usuarioLogadoAtual.id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(usuario)
-        });
-    } else {
-        // Criar novo usuário logado
-        await fetch(LOGADO_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(usuario)
+            method: 'DELETE'
         });
     }
+    
+    // Criar novo usuário logado
+    await fetch(LOGADO_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(usuario)
+    });
 }
+
 
 // Monitorar os campos de entrada e ativar botão
 document.getElementById('login-form').addEventListener('input', async () => {

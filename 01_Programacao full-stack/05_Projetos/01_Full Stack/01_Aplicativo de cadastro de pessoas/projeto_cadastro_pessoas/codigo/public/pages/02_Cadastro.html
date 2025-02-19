@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="../assets/css/02_Cadastro.css">
+        <script src="https://cdn.jsdelivr.net/npm/cleave.js/dist/cleave.min.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     </head>
 
@@ -17,7 +19,6 @@
         <h1 style="text-align: center; margin-bottom: 10px;">Cadastro de Pessoas Carentes</h1>
         <form id="login-form" class="form" method="post" onsubmit="loginUser(event)">
             <!-- Informações de login -->
-
             <div class="form-group-N">
                 <label for="txt_nome" class="text-info">Nome Completo</label>
                 <input type="text" name="txt_nome" id="txt_nome" class="form-control" required>
@@ -28,6 +29,7 @@
                 <input type="email" name="txt_email" id="txt_email" class="form-control" required>
                 <span class="star">✦</span>
             </div>
+
             <!-- Informações pessoais -->
             <div class="form-group-N">
                 <label for="txt_idade" class="text-info">Idade</label>
@@ -49,22 +51,65 @@
                 <input type="text" name="txt_endereco" id="txt_endereco" class="form-control" required>
                 <span class="star">✦</span>
             </div>
+
+            <!-- Novo campo de CPF -->
+            <div class="form-group-N">
+                <label for="txt_cpf" class="text-info">CPF</label>
+                <input type="text" name="txt_cpf" id="txt_cpf" class="form-control" placeholder="Digite seu CPF" required>
+                <span class="star">✦</span>
+            </div>
+        
+            <script>
+                // Inicialize o Cleave.js para formatar o CPF
+                new Cleave('#txt_cpf', {
+                    blocks: [3, 3, 3, 2], // Formato do CPF: 3 dígitos, 3 dígitos, 3 dígitos, 2 dígitos
+                    delimiter: '.', // Delimitador entre os blocos
+                    numericOnly: true, // Aceita apenas números
+                    onValueChanged: function (e) {
+                        // Remove o último caractere se for um delimitador
+                        if (e.target.value.endsWith('.') || e.target.value.endsWith('-')) {
+                            e.target.value = e.target.value.slice(0, -1);
+                        }
+                    }
+                });
+            </script>
+
+            <!-- Novo campo de Data de Nascimento -->
+            <div class="form-group-N">
+                <label for="txt_dtnasc" class="text-info">Data de Nascimento</label>
+                <input type="date" name="txt_dtnasc" id="txt_dtnasc" class="form-control" required>
+                <span class="star">✦</span>
+            </div>
             <hr>
         
-
             <!-- Informações socioeconômicas -->
             <h4 class="text-info" style="text-align: center; margin-bottom: 20px;">Informações Socioeconômicas</h4>
             <div class="form-group-N">
                 <label for="txt_renda" class="text-info">Renda Familiar</label>
-                <input type="number" name="txt_renda" id="txt_renda" class="form-control" placeholder="Digite a renda mensal da família" required>
-                <span class="star">✦</span>
+                <input type="text" name="txt_renda" id="txt_renda" class="form-control" placeholder="Digite a renda mensal da família" oninput="formatarMoeda(this)" required>
 
+                <script>
+                    function formatarMoeda(campo) {
+                        // Remove tudo que não for número
+                        let valor = campo.value.replace(/\D/g, '');
+                
+                        // Adiciona a formatação de moeda
+                        valor = (valor / 100).toLocaleString('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        });
+                
+                        // Atualiza o valor do campo
+                        campo.value = valor;
+                    }
+                </script>               
+                <span class="star">✦</span>
             </div>
+            
             <div class="form-group-N">
                 <label for="txt_comodos" class="text-info">Número de Cômodos na Casa</label>
                 <input type="number" name="txt_comodos" id="txt_comodos" class="form-control" required>
                 <span class="star">✦</span>
-
             </div>
             <div class="form-group-N">
                 <label for="txt_acesso_internet" class="text-info">Acesso à Internet?</label>
@@ -74,7 +119,6 @@
                     <option value="Não">Não</option>
                 </select>
                 <span class="star">✦</span>
-
             </div>
 
             <!-- Campos de senha -->
@@ -93,7 +137,6 @@
             <div class="form-group d-flex justify-content-center">
                 <button type="submit" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;">Cadastrar</button>
             </div>
-
 
             <a href="./03_Login.html" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;">Login</a>
         </form>

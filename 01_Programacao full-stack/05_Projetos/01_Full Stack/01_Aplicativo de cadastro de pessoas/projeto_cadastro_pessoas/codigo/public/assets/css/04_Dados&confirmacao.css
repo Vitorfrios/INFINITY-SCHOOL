@@ -1,6 +1,5 @@
 /* Body */
 body {
-    overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #E8F0F2;
     margin: 0;
@@ -140,7 +139,6 @@ body {
 }
 
 .modal {
-    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -150,6 +148,8 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
+    align-content: center;
+    display: flex; /* Altere para flex */
 }
 
 .modal-content {
@@ -160,6 +160,9 @@ body {
     width: 600px;
     display: flex;
     flex-direction: column;
+    /* Adicione estas linhas para centralizar o conteúdo */
+    margin: auto; /* Centraliza horizontalmente */
+    max-width: 90%; /* Para responsividade */
 }
 
 .modal-header {
@@ -256,6 +259,8 @@ body {
     position: absolute;
     cursor: pointer;
 }
+
+
 
 /* Responsividade */
 @media (max-width: 1280px) {

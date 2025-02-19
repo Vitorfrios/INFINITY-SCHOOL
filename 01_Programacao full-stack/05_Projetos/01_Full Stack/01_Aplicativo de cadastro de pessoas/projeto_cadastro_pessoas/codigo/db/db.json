@@ -2,44 +2,33 @@
   "usuarios": [
     {
       "id": 1,
-      "login": "s",
-      "nome": "s",
-      "email": "s@gmail.com",
-      "idade": "23",
-      "genero": "Masculino",
-      "endereco": "12121212121212",
-      "senha": "12",
-      "renda": "121212",
-      "comodos": "1",
-      "acesso_internet": "Sim"
-    },
-    {
-      "id": 2,
-      "login": "12",
-      "nome": "122",
-      "email": "12@gmail.com",
+      "nome": "vitor",
+      "email": "w@gmail.com",
       "idade": "12",
       "genero": "Masculino",
-      "endereco": "121212",
-      "senha": "12112",
-      "renda": "122",
-      "comodos": "12",
-      "acesso_internet": "Sim"
+      "endereco": "tobias",
+      "senha": "12",
+      "renda": "R$ 1.200,00",
+      "comodos": "10",
+      "acesso_internet": "Não",
+      "cpf": "131.123.123.12",
+      "dataNascimento": "2005-09-04"
     }
   ],
   "usuario_logado": [
     {
-      "id": 2,
-      "login": "12",
-      "nome": "122",
-      "email": "12@gmail.com",
+      "id": 1,
+      "nome": "vitor",
+      "email": "w@gmail.com",
       "idade": "12",
       "genero": "Masculino",
-      "endereco": "121212",
+      "endereco": "tobias",
       "senha": "12",
-      "renda": "122",
-      "comodos": "12",
-      "acesso_internet": "Sim"
+      "renda": "R$ 1.200,00",
+      "comodos": "10",
+      "acesso_internet": "Não",
+      "cpf": "131.123.123.12",
+      "dataNascimento": "2005-09-04"
     }
   ]
 }

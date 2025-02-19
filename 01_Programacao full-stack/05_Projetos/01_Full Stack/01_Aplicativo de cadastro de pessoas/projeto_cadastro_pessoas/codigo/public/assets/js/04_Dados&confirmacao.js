@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!usuarioLogado) {
         alert('Nenhum usuário logado encontrado.');
-        window.location.href = 'index.html';
+        window.location.href = '01_Inicio_logo.html';
         return;
     }
 
@@ -27,19 +27,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         modal.style.display = 'none';
     });
 
-    // Salvar alterações e atualizar servidor/localStorage
+    // Salvar alterações e atualizar servidor
     btnSave.addEventListener('click', async () => {
         const novosDados = obterDadosModal();
         const usuarioAtualizado = { ...usuarioLogado, ...novosDados };
-
-        // Atualiza no localStorage
-        localStorage.setItem('usuario_logado', JSON.stringify(usuarioAtualizado));
-
-        // Atualiza no servidor
+    
         await atualizarUsuario(usuarioAtualizado);
-
+    
         alert('Dados atualizados com sucesso!');
-        location.reload();
+        
+        // Atualiza os dados na tela sem precisar recarregar a página
+        atualizarExibicao(usuarioAtualizado);
     });
 
     // ALTERAÇÃO DE SENHA
@@ -75,34 +73,12 @@ async function obterUsuarioLogado() {
 }
 
 // 📌 Atualiza os dados do usuário no servidor
-async function atualizarUsuario(usuario) {
-    try {
-        // Atualiza os dados no servidor (Tabela de Usuários)
-        await fetch(`${SERVER_URL}/${usuario.id}`, {
-            method: 'PATCH', // PATCH para alterar apenas os campos modificados
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(usuario)
-        });
-
-        // Atualiza os dados do usuário logado no servidor
-        await fetch(`${LOGADO_URL}/1`, {  
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(usuario)
-        });
-
-        // Atualiza no localStorage
-        localStorage.setItem('usuario_logado', JSON.stringify(usuario));
-
-    } catch (error) {
-        console.error('Erro ao atualizar os dados:', error);
-        alert('Erro ao salvar as alterações.');
-    }
-}
-
-
-// 📌 Atualiza a exibição dos dados na tela
 function atualizarExibicao(usuario) {
+    if (!usuario) {
+        alert('Erro: Usuário não encontrado.');
+        return;
+    }
+
     document.getElementById('nome-completo').textContent = usuario.nome;
     document.getElementById('email').textContent = usuario.email;
     document.getElementById('idade').textContent = usuario.idade;
@@ -111,47 +87,102 @@ function atualizarExibicao(usuario) {
     document.getElementById('renda').textContent = usuario.renda;
     document.getElementById('comodos').textContent = usuario.comodos;
     document.getElementById('acesso_internet').textContent = usuario.acesso_internet;
+    document.getElementById('cpf').textContent = usuario.cpf;
+    
+    // Exibindo a data de nascimento no formato correto
+    const dataNascimento = new Date(usuario.dataNascimento);
+    const dataFormatada = dataNascimento.toLocaleDateString('pt-BR');
+    document.getElementById('data_nascimento').textContent = dataFormatada;
+    document.getElementById('user-name-placeholder').textContent = usuario.nome;
+
+    // Atualiza o título da página
+    document.title = `Dados do Usuário ${usuario.nome}`;
 }
 
-// 📌 Preenche o modal com os dados do usuário
+
+
+// Preenche o modal com os dados do usuário
 function preencherModal(usuario) {
     document.getElementById('edit-nome').value = usuario.nome;
     document.getElementById('edit-email').value = usuario.email;
-    document.getElementById('edit-login').value = usuario.login;
     document.getElementById('edit-idade').value = usuario.idade;
     document.getElementById('edit-genero').value = usuario.genero;
     document.getElementById('edit-endereco').value = usuario.endereco;
     document.getElementById('edit-renda').value = usuario.renda;
     document.getElementById('edit-comodos').value = usuario.comodos;
-    
-    // Atualize o campo de Acesso à Internet para usar o id correto do novo <select>
+    document.getElementById('edit-cpf').value = usuario.cpf;
+
+    // Preenchendo o campo de data de nascimento com o valor correto
+    const dataNascimento = new Date(usuario.dataNascimento);
+    const dataFormatada = dataNascimento.toISOString().split('T')[0]; // Formato yyyy-mm-dd
+    document.getElementById('edit-data-nascimento').value = dataFormatada;
+
     document.getElementById('txt_acesso_internet').value = usuario.acesso_internet;
-    
+
     document.getElementById('edit-form').style.display = 'block';
 }
 
-// 📌 Obtém os dados do modal
+// Obtém os dados do modal
 function obterDadosModal() {
     return {
         nome: document.getElementById('edit-nome').value,
         email: document.getElementById('edit-email').value,
-        login: document.getElementById('edit-login').value,
         idade: document.getElementById('edit-idade').value,
         genero: document.getElementById('edit-genero').value,
         endereco: document.getElementById('edit-endereco').value,
         renda: document.getElementById('edit-renda').value,
         comodos: document.getElementById('edit-comodos').value,
-        // Acesso à Internet: agora estamos pegando o valor do <select> com o id correto
+        cpf: document.getElementById('edit-cpf').value,
+        dataNascimento: document.getElementById('edit-data-nascimento').value, // Correção aqui para usar o campo correto
         acesso_internet: document.getElementById('txt_acesso_internet').value
     };
 }
+
+// 📌 Atualiza os dados do usuário no servidor
+async function atualizarUsuario(usuario) {
+    try {
+        // Atualiza em "usuarios"
+        const responseUsuarios = await fetch(`${SERVER_URL}/${usuario.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuario)
+        });
+
+        if (!responseUsuarios.ok) {
+            throw new Error('Erro ao atualizar em usuarios.');
+        }
+
+        // Atualiza em "usuario_logado"
+        const responseLogado = await fetch(`${LOGADO_URL}/${usuario.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuario)
+        });
+
+        if (!responseLogado.ok) {
+            throw new Error('Erro ao atualizar em usuario_logado.');
+        }
+
+        const usuarioAtualizado = await responseUsuarios.json();
+        const usuarioLogadoAtualizado = await responseLogado.json();
+
+        localStorage.setItem('usuario_logado', JSON.stringify(usuarioLogadoAtualizado));
+
+        console.log('Usuário atualizado com sucesso em ambos os endpoints.');
+
+    } catch (error) {
+        console.error('Erro ao atualizar os dados:', error);
+        alert('Erro ao salvar as alterações.');
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado'));
 
     if (!usuarioLogado) {
         alert('Nenhum usuário logado encontrado.');
-        window.location.href = 'index.html';
+        window.location.href = '01_Inicio_logo.html';
         return;
     }
 
@@ -211,25 +242,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// 📌 Baixar os dados do usuário em um arquivo
+// 📌 Baixar os dados do usuário em um arquivo PDF
 function baixarDados(usuario) {
-    const doc = `
-        Nome: ${usuario.nome}
-        E-mail: ${usuario.email}
-        Idade: ${usuario.idade}
-        Gênero: ${usuario.genero}
-        Endereço: ${usuario.endereco}
-        Renda: ${usuario.renda}
-        Cômodos: ${usuario.comodos}
-        Acesso à Internet: ${usuario.acesso_internet}
-    `;
+    const { jsPDF } = window.jspdf; 
+    const doc = new jsPDF();
 
-    const blob = new Blob([doc], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'dados_usuario.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text("Dados do Usuário", 20, 20);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    let linha = 40;
+
+    // Formatando a data de nascimento corretamente
+    const dataNascimento = new Date(usuario.dataNascimento);
+    const dataFormatada = dataNascimento.toLocaleDateString('pt-BR'); // Formato dd/mm/aaaa
+
+    // Alterei a ordem dos campos conforme solicitado
+    const dados = [
+        `Nome Completo: ${usuario.nome}`,
+        `E-mail: ${usuario.email}`,
+        `Idade: ${usuario.idade}`,
+        `CPF: ${usuario.cpf}`,
+        `Data de Nascimento: ${dataFormatada}`,
+        `Gênero: ${usuario.genero}`,
+        `Endereço: ${usuario.endereco}`,
+        `Renda: ${usuario.renda}`,
+        `Cômodos: ${usuario.comodos}`,
+        `Acesso à Internet: ${usuario.acesso_internet}`,
+    ];
+
+    // Adicionando todos os dados no PDF
+    dados.forEach((dado) => {
+        doc.text(dado, 20, linha);
+        linha += 10;
+    });
+
+    // Nome do arquivo baseado no nome do usuário
+    const nomeArquivo = `Dados do Usuário_${usuario.nome}.pdf`;
+
+    // Salvando o arquivo com o nome personalizado
+    doc.save(nomeArquivo);
 }
+
+
+
+
