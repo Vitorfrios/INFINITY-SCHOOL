@@ -19,86 +19,120 @@ npm start
 <body>
 
     <div class="main-content">
-        <div class="space">
-            <div class="profile-header">Usuário</div>
+        <div class="profile-header">Dados do Usuário Cadastro</div> 
 
-            <div class="profile-container">
-                <div class="profile-item">
-                    <div>Nome Completo</div>
-                    <span id="nome-completo"></span>
-                </div>
-                <div class="profile-item">
-                    <div>E-mail</div>
-                    <span id="email"></span>
-                </div>
-                <div class="profile-item">
-                    <div>Idade</div>
-                    <span id="idade"></span>
-                </div>
-                <div class="profile-item">
-                    <div>Gênero</div>
-                    <span id="genero"></span>
-                </div>
-                <div class="profile-item">
-                    <div>Endereço</div>
-                    <span id="endereco"></span>
-                </div>
-                <div class="profile-item">
-                    <div>Renda</div>
-                    <span id="renda"></span>
-                </div>
-                <div class="profile-item">
-                    <div>Cômodos</div>
-                    <span id="comodos"></span>
-                </div>
-                <div class="profile-item">
-                    <div>Acesso à Internet</div>
-                    <span id="acesso_internet"></span>
-                </div>
-    
-                <div class="profile-itemBtn">
-                    <div>Senha</div>
-                    <button id="change-password">Alterar Senha</button>
-                </div>
-                <div class="profile-itemBtn">
-                    <div>Dados</div>
-                    <div class="btn">
-                        <button id="edit-profile">Editar Dados</button>
-                        <button id="dow-profile">Baixar Dados</button>
-                    </div>
+        <div class="profile-container">
+            <div class="profile-item">
+                <div>Nome Completo</div>
+                <span id="nome-completo"></span>
+            </div>
+            <div class="profile-item">
+                <div>E-mail</div>
+                <span id="email"></span>
+            </div>
+            <div class="profile-item">
+                <div>Idade</div>
+                <span id="idade"></span>
+            </div>
+            <div class="profile-item">
+                <div>Gênero</div>
+                <span id="genero"></span>
+            </div>
+            <div class="profile-item">
+                <div>Endereço</div>
+                <span id="endereco"></span>
+            </div>
+            <div class="profile-item">
+                <div>Renda</div>
+                <span id="renda"></span>
+            </div>
+            <div class="profile-item">
+                <div>Cômodos</div>
+                <span id="comodos"></span>
+            </div>
+            <div class="profile-item">
+                <div>Acesso à Internet</div>
+                <span id="acesso_internet"></span>
+            </div>
+
+            <div class="profile-itemBtn">
+                <div>Senha</div>
+                <button id="open-password-modal">Alterar Senha</button>
+            </div>
+            <div class="profile-itemBtn">
+                <div>Dados</div>
+                <div class="btn">
+                    <button id="edit-profile">Editar Dados</button>
+                    <button id="dow-profile">Baixar Dados</button>
                 </div>
             </div>
         </div>
-        
+
+            <!-- Modal para Editar Dados -->
         <div id="edit-form" class="modal">
             <div class="modal-content">
                 <span class="close" id="close-edit-form">&times;</span>
                 <div class="modal-header">Editar Dados</div>
-                <div class="form-group-N">
-                    <label>Nome Completo</label>
-                    <input type="text" id="edit-nome"><br><br>
-                    <span class="star">✦</span>
 
-                </div>
+                <div class="form-container">
+                    <div class="form-group-N">
+                        <label>Nome Completo</label>
+                        <input type="text" id="edit-nome">
+                    </div>
+                    <div class="form-group-N">
+                        <label>Idade</label>
+                        <input type="number" id="edit-idade">
+                    </div>
+                    
+                    <div class="form-group-N">
+                        <label>E-mail</label>
+                        <input type="text" id="edit-email">
+                    </div>
+                    <div class="form-group-N">
+                        <label>Nome de Usuário</label>
+                        <input type="text" id="edit-login">
+                    </div>
 
-                <div class="form-group-N">
-                    <label>E-mail</label>
-                    <input type="text" id="edit-email"><br><br>
-                    <span class="star">✦</span>
+                    <div class="form-group-N">
+                        <label>Endereço</label>
+                        <input type="text" id="edit-endereco">
+                    </div>
+                    <div class="form-group-N">
+                        <label>Renda</label>
+                        <input type="text" id="edit-renda">
+                    </div>
 
-                </div>
-
-                <div class="form-group-N">
-                    <label>Nome de Usuário</label>
-                    <input type="text" id="edit-login"><br><br>
-                    <span class="star">✦</span>
-
+                    <div class="form-group-N">
+                        <label>Cômodos</label>
+                        <input type="text" id="edit-comodos">
+                    </div>
+                    
+                    <div class="form-group-N">
+                        <label for="txt_acesso_internet" class="text-info">Acesso à Internet?</label>
+                        <select name="txt_acesso_internet" id="txt_acesso_internet" class="form-control" required>
+                            <option value="">Selecione...</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group-N">
+                        <label for="edit-genero" class="text-info">Gênero</label>
+                        <select id="edit-genero" class="form-control" required>
+                            <option value="">Selecione...</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    
                 </div>
 
                 <button id="save-changes">Salvar Alterações</button>
             </div>
         </div>
-        
+
+
         <!-- Modal de Alteração de Senha -->
         <div id="password-modal" class="modal">
             <div class="modal-content">

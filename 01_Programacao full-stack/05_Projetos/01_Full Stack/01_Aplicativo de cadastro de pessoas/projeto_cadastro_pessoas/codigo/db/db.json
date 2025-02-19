@@ -16,7 +16,22 @@
     {
       "id": 2,
       "login": "12",
-      "nome": "12",
+      "nome": "122",
+      "email": "12@gmail.com",
+      "idade": "12",
+      "genero": "Masculino",
+      "endereco": "121212",
+      "senha": "12112",
+      "renda": "122",
+      "comodos": "12",
+      "acesso_internet": "Sim"
+    }
+  ],
+  "usuario_logado": [
+    {
+      "id": 2,
+      "login": "12",
+      "nome": "122",
       "email": "12@gmail.com",
       "idade": "12",
       "genero": "Masculino",

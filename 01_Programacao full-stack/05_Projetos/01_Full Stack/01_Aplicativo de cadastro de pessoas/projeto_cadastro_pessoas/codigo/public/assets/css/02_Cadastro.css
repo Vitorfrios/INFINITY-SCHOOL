@@ -5,7 +5,7 @@ body {
     align-items: center;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #cafcf3, #00aeff, #4ad0e2);
+    background: linear-gradient(45deg, #78aba1, #16709a, #4ad0e2);
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
     overflow: auto; /* Permitir rolagem quando necessário */
@@ -160,8 +160,8 @@ select.form-control:not([size]):not([multiple]) {
     height: 100%;
 }
 
-hr{
-    color: rgb(0, 162, 255); 
+hr {
+    color: rgb(0, 162, 255);
     display: block;
     width: 100%; /* Ajuste a largura para que seja visível */
     margin-bottom: 20px;
@@ -169,4 +169,45 @@ hr{
     margin-right: auto;
     border-style: solid; /* Mudando para solid */
     border-width: 1px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    #login-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    .form-group-N input,
+    .form-group-N select {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    #login-box {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .form-group-N input,
+    .form-group-N select {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+    }
 }

@@ -1,304 +1,235 @@
+const SERVER_URL = 'http://localhost:3000/usuarios';
+const LOGADO_URL = 'http://localhost:3000/usuario_logado';
 
-/*
-DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
-npm start 
-*/
+document.addEventListener('DOMContentLoaded', async () => {
+    let usuarioLogado = await obterUsuarioLogado();
 
-// ------------------- SIDE BAR CODIGO ------------------- //
-
-// Marcar a aba ativa na sidebar
-document.addEventListener("DOMContentLoaded", function() {
-    function highlightActiveItem() {
-        const currentPage = window.location.pathname.split("/").pop(); 
-
-        const items = document.querySelectorAll('.sidebar ul li');
-        items.forEach(item => {
-            item.classList.remove('active');
-        });
-        if (currentPage === '05_Dashboard.html') {
-            document.getElementById('dashboard').classList.add('active');
-        } else if (currentPage === '06_Cronograma_Diario.html') {
-            document.getElementById('cronograma').classList.add('active');
-        } else if (currentPage === '07_Criacao_Tarefas.html') {
-            document.getElementById('tarefas').classList.add('active');
-        } else if (currentPage === '08_Sugestao.html') {
-            document.getElementById('sugestao').classList.add('active');
-        } else if (currentPage === '09_Perfil.html') {
-            document.getElementById('perfil').classList.add('active');
-        } else if (currentPage === '10_Suporte_Feedback.html') {
-            document.getElementById('feedback').classList.add('active');
-        }
+    if (!usuarioLogado) {
+        alert('Nenhum usuário logado encontrado.');
+        window.location.href = 'index.html';
+        return;
     }
 
+    // Preenchendo os dados na tela
+    atualizarExibicao(usuarioLogado);
 
-    highlightActiveItem();
-});
+    // MODAL DE EDIÇÃO DE PERFIL
+    const modal = document.getElementById('edit-form');
+    const btnEdit = document.getElementById('edit-profile');
+    const btnClose = document.getElementById('close-edit-form');
+    const btnSave = document.getElementById('save-changes');
 
+    // Preenchendo os campos do modal com os dados atuais
+    btnEdit.addEventListener('click', () => preencherModal(usuarioLogado));
 
+    // Fechar modal
+    btnClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 
+    // Salvar alterações e atualizar servidor/localStorage
+    btnSave.addEventListener('click', async () => {
+        const novosDados = obterDadosModal();
+        const usuarioAtualizado = { ...usuarioLogado, ...novosDados };
 
-// Função para carregar o nome do usuário logado
-async function carregarNomeUsuarioLogado() {
-    try {
-        const usuarioLogadoResponse = await fetch('http://localhost:3000/usuario_logado');
-        const usuarioLogado = await usuarioLogadoResponse.json();
+        // Atualiza no localStorage
+        localStorage.setItem('usuario_logado', JSON.stringify(usuarioAtualizado));
 
-        if (!usuarioLogadoResponse.ok || usuarioLogado.length === 0) {
-            console.error('Usuário logado não encontrado!');
+        // Atualiza no servidor
+        await atualizarUsuario(usuarioAtualizado);
+
+        alert('Dados atualizados com sucesso!');
+        location.reload();
+    });
+
+    // ALTERAÇÃO DE SENHA
+    document.getElementById('save-password').addEventListener('click', async () => {
+        const novaSenha = document.getElementById('new-password').value;
+        if (!novaSenha) {
+            alert('A senha não pode estar vazia!');
             return;
         }
 
-        document.querySelector('.name').textContent = usuarioLogado[0].nome || 'Nome não encontrado';
-    } catch (error) {
-        console.error('Erro ao carregar o nome do usuário logado:', error);
-    }
-}
+        const usuarioAtualizado = { ...usuarioLogado, senha: novaSenha };
 
-carregarNomeUsuarioLogado();
-
-
-
-// ------------------- FIM DA SIDE BAR ------------------- //
-
-// Função para carregar os dados do usuário logado
-async function carregarDadosUsuario() {
-    try {
-        const usuarioLogadoResponse = await fetch('http://localhost:3000/usuario_logado');
-        const usuarioLogado = await usuarioLogadoResponse.json();
-
-        if (!usuarioLogadoResponse.ok || usuarioLogado.length === 0) {
-            alert('Usuário não encontrado!');
-            return;
-        }
-
-        
-        const usuario = usuarioLogado[0];
-        document.getElementById('nome-completo').textContent = usuario.nome || 'N/A';
-        document.getElementById('email').textContent = usuario.email || 'N/A';
-        document.getElementById('nome-usuario').textContent = usuario.login || 'N/A';
-
-        
-        document.getElementById('notification-toggle').checked = usuario.notificacoes || false;
-
-        
-        document.getElementById('edit-nome').value = usuario.nome || '';
-        document.getElementById('edit-email').value = usuario.email || '';
-        document.getElementById('edit-login').value = usuario.login || '';
-
-        
-        document.getElementById('new-password').value = usuario.senha || '';  
-    } catch (error) {
-        console.error('Erro ao carregar os dados do usuário:', error);
-    }
-}
-
-// Função para salvar o estado de notificações
-async function salvarEstadoNotificacoes(ativo) {
-    const usuarioLogadoResponse = await fetch('http://localhost:3000/usuario_logado');
-    const usuarioLogado = await usuarioLogadoResponse.json();
-
-    if (!usuarioLogadoResponse.ok || usuarioLogado.length === 0) {
-        alert('Usuário não encontrado!');
-        return;
-    }
-
-    const usuarioId = usuarioLogado[0].id; 
-
-    try {
-        
-        const responseUsuarios = await fetch(`http://localhost:3000/usuarios/${usuarioId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: usuarioId,
-                nome: usuarioLogado[0].nome, 
-                email: usuarioLogado[0].email, 
-                login: usuarioLogado[0].login, 
-                senha: usuarioLogado[0].senha, 
-                notificacoes: ativo 
-            })
-        });
-
-        if (!responseUsuarios.ok) {
-            throw new Error('Erro ao atualizar notificações no endpoint usuarios');
-        }
-
-        
-        const responseUsuarioLogado = await fetch(`http://localhost:3000/usuario_logado/${usuarioId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: usuarioId,
-                nome: usuarioLogado[0].nome, 
-                email: usuarioLogado[0].email, 
-                login: usuarioLogado[0].login, 
-                senha: usuarioLogado[0].senha, 
-                notificacoes: ativo 
-            })
-        });
-
-        if (!responseUsuarioLogado.ok) {
-            throw new Error('Erro ao atualizar notificações no endpoint usuario_logado');
-        }
-
-    } catch (error) {
-        console.error('Erro ao salvar o estado de notificações:', error);
-        alert(`Erro ao salvar as notificações: ${error.message}`);
-    }
-}
-
-
-document.getElementById('notification-toggle').onclick = function() {
-    const isAtivo = this.checked;
-    salvarEstadoNotificacoes(isAtivo);
-};
-
-
-carregarDadosUsuario();
-
-// Função para salvar os dados editados
-async function salvarDadosEditados() {
-    const usuarioLogadoResponse = await fetch('http://localhost:3000/usuario_logado');
-    const usuarioLogado = await usuarioLogadoResponse.json();
-
-    if (!usuarioLogadoResponse.ok || usuarioLogado.length === 0) {
-        alert('Usuário não encontrado!');
-        return;
-    }
-
-    const usuarioId = usuarioLogado[0].id; 
-    const novoNome = document.getElementById('edit-nome').value;
-    const novoEmail = document.getElementById('edit-email').value;
-    const novoLogin = document.getElementById('edit-login').value;
-
-    
-    const notificacoesAtivas = usuarioLogado[0].notificacoes;
-
-    try {
-        
-        const response = await fetch(`http://localhost:3000/usuarios/${usuarioId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                id: usuarioId, 
-                nome: novoNome, 
-                email: novoEmail, 
-                login: novoLogin, 
-                senha: document.getElementById('new-password').value, 
-                notificacoes: notificacoesAtivas 
-            })
-        });
-        if (!response.ok) throw new Error('Erro ao salvar dados no endpoint usuarios');
-
-        
-        const updateUsuarioLogadoResponse = await fetch(`http://localhost:3000/usuario_logado/${usuarioId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: usuarioId, 
-                nome: novoNome,
-                email: novoEmail,
-                login: novoLogin,
-                senha: document.getElementById('new-password').value, 
-                notificacoes: notificacoesAtivas 
-            })
-        });
-
-        if (!updateUsuarioLogadoResponse.ok) throw new Error('Erro ao salvar dados no endpoint usuario_logado');
-
-        
-        document.getElementById('nome-completo').textContent = novoNome;
-        document.getElementById('email').textContent = novoEmail;
-        document.getElementById('nome-usuario').textContent = novoLogin;
-
-        
-        document.getElementById('edit-form').style.display = 'none';
-        alert('Alterações salvas com sucesso!');
-    } catch (error) {
-        console.error('Erro ao salvar os dados do usuário:', error);
-        alert(`Erro ao salvar os dados: ${error.message}`);
-    }
-}
-
-
-// Função para salvar a nova senha no endpoint 'usuarios' e atualizar a senha no 'usuario_logado'
-async function salvarNovaSenha() {
-    const usuarioLogadoResponse = await fetch('http://localhost:3000/usuario_logado');
-    const usuarioLogado = await usuarioLogadoResponse.json();
-
-    if (!usuarioLogadoResponse.ok || usuarioLogado.length === 0) {
-        alert('Usuário não encontrado!');
-        return;
-    }
-
-    const usuarioId = usuarioLogado[0].id; 
-    const novaSenha = document.getElementById('new-password').value;
-
-    
-    const notificacoesAtivas = usuarioLogado[0].notificacoes;
-
-    try {
-        
-        const response = await fetch(`http://localhost:3000/usuarios/${usuarioId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: usuarioId, 
-                nome: document.getElementById('edit-nome').value, 
-                email: document.getElementById('edit-email').value, 
-                login: document.getElementById('edit-login').value, 
-                senha: novaSenha, 
-                notificacoes: notificacoesAtivas 
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro ao alterar a senha no endpoint usuarios. Status: ${response.status}`);
-        }
-
-        
-        const updateUsuarioLogadoResponse = await fetch(`http://localhost:3000/usuario_logado/${usuarioId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: usuarioId,
-                nome: document.getElementById('edit-nome').value,
-                email: document.getElementById('edit-email').value,
-                login: document.getElementById('edit-login').value,
-                senha: novaSenha,
-                notificacoes: notificacoesAtivas 
-            })
-        });
-
-        if (!updateUsuarioLogadoResponse.ok) {
-            throw new Error(`Erro ao atualizar a senha no endpoint usuario_logado. Status: ${updateUsuarioLogadoResponse.status}`);
-        }
-
+        // Atualiza a senha no servidor e localStorage
+        await atualizarUsuario(usuarioAtualizado);
         alert('Senha alterada com sucesso!');
         document.getElementById('password-modal').style.display = 'none';
+    });
+
+    // DOWNLOAD DOS DADOS EM PDF (Apenas gera um arquivo .txt como exemplo)
+    document.getElementById('dow-profile').addEventListener('click', () => baixarDados(usuarioLogado));
+});
+
+// 📌 Obtém os dados do usuário logado
+async function obterUsuarioLogado() {
+    try {
+        const response = await fetch(LOGADO_URL);
+        const data = await response.json();
+        return data.length > 0 ? data[0] : null;
     } catch (error) {
-        console.error('Erro ao alterar a senha:', error);
-        alert(`Erro ao alterar a senha: ${error.message}`);
+        console.error('Erro ao obter usuário logado:', error);
+        return null;
+    }
+}
+
+// 📌 Atualiza os dados do usuário no servidor
+async function atualizarUsuario(usuario) {
+    try {
+        // Atualiza os dados no servidor (Tabela de Usuários)
+        await fetch(`${SERVER_URL}/${usuario.id}`, {
+            method: 'PATCH', // PATCH para alterar apenas os campos modificados
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuario)
+        });
+
+        // Atualiza os dados do usuário logado no servidor
+        await fetch(`${LOGADO_URL}/1`, {  
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuario)
+        });
+
+        // Atualiza no localStorage
+        localStorage.setItem('usuario_logado', JSON.stringify(usuario));
+
+    } catch (error) {
+        console.error('Erro ao atualizar os dados:', error);
+        alert('Erro ao salvar as alterações.');
     }
 }
 
 
-// Eventos de clique para abrir e fechar os modais
-document.getElementById('edit-profile').onclick = () => {
-    document.getElementById('edit-form').style.display = 'flex';
-};
-document.getElementById('change-password').onclick = () => {
-    document.getElementById('password-modal').style.display = 'flex';
-    carregarDadosUsuario(); 
-};
-document.getElementById('close-edit-form').onclick = () => {
-    document.getElementById('edit-form').style.display = 'none';
-};
-document.getElementById('close-password-modal').onclick = () => {
-    document.getElementById('password-modal').style.display = 'none';
-};
+// 📌 Atualiza a exibição dos dados na tela
+function atualizarExibicao(usuario) {
+    document.getElementById('nome-completo').textContent = usuario.nome;
+    document.getElementById('email').textContent = usuario.email;
+    document.getElementById('idade').textContent = usuario.idade;
+    document.getElementById('genero').textContent = usuario.genero;
+    document.getElementById('endereco').textContent = usuario.endereco;
+    document.getElementById('renda').textContent = usuario.renda;
+    document.getElementById('comodos').textContent = usuario.comodos;
+    document.getElementById('acesso_internet').textContent = usuario.acesso_internet;
+}
 
-document.getElementById('save-changes').onclick = salvarDadosEditados;
-document.getElementById('save-password').onclick = salvarNovaSenha;
+// 📌 Preenche o modal com os dados do usuário
+function preencherModal(usuario) {
+    document.getElementById('edit-nome').value = usuario.nome;
+    document.getElementById('edit-email').value = usuario.email;
+    document.getElementById('edit-login').value = usuario.login;
+    document.getElementById('edit-idade').value = usuario.idade;
+    document.getElementById('edit-genero').value = usuario.genero;
+    document.getElementById('edit-endereco').value = usuario.endereco;
+    document.getElementById('edit-renda').value = usuario.renda;
+    document.getElementById('edit-comodos').value = usuario.comodos;
+    
+    // Atualize o campo de Acesso à Internet para usar o id correto do novo <select>
+    document.getElementById('txt_acesso_internet').value = usuario.acesso_internet;
+    
+    document.getElementById('edit-form').style.display = 'block';
+}
 
-carregarDadosUsuario();
+// 📌 Obtém os dados do modal
+function obterDadosModal() {
+    return {
+        nome: document.getElementById('edit-nome').value,
+        email: document.getElementById('edit-email').value,
+        login: document.getElementById('edit-login').value,
+        idade: document.getElementById('edit-idade').value,
+        genero: document.getElementById('edit-genero').value,
+        endereco: document.getElementById('edit-endereco').value,
+        renda: document.getElementById('edit-renda').value,
+        comodos: document.getElementById('edit-comodos').value,
+        // Acesso à Internet: agora estamos pegando o valor do <select> com o id correto
+        acesso_internet: document.getElementById('txt_acesso_internet').value
+    };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado'));
+
+    if (!usuarioLogado) {
+        alert('Nenhum usuário logado encontrado.');
+        window.location.href = 'index.html';
+        return;
+    }
+
+    // MODAL DE ALTERAÇÃO DE SENHA
+    const passwordModal = document.getElementById('password-modal');
+    const btnOpenPasswordModal = document.getElementById('open-password-modal'); // Botão para abrir o modal
+    const btnClosePasswordModal = document.getElementById('close-password-modal');
+    const btnSavePassword = document.getElementById('save-password');
+    const passwordField = document.getElementById('new-password');
+    const togglePasswordIcon = document.getElementById('toggle-password');
+
+    // Abrir modal de senha e preencher o campo com a senha atual
+    btnOpenPasswordModal.addEventListener('click', () => {
+        passwordField.value = usuarioLogado.senha || ''; // Exibe a senha salva
+        passwordModal.style.display = 'block';
+    });
+
+    // Fechar modal de senha
+    btnClosePasswordModal.addEventListener('click', () => {
+        passwordModal.style.display = 'none';
+    });
+
+    // Salvar nova senha
+    btnSavePassword.addEventListener('click', async () => {
+        const novaSenha = passwordField.value;
+
+        if (novaSenha.length < 6) {
+            alert('A senha deve ter pelo menos 6 caracteres.');
+            return;
+        }
+
+        // Atualiza os dados do usuário logado
+        usuarioLogado.senha = novaSenha;
+        localStorage.setItem('usuario_logado', JSON.stringify(usuarioLogado));
+
+        // Atualiza a senha no array de usuários no localStorage
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        usuarios = usuarios.map(user =>
+            user.id === usuarioLogado.id ? { ...user, senha: novaSenha } : user
+        );
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+        // Atualiza no servidor (JSON Server)
+        try {
+            await fetch(`http://localhost:3000/usuarios/${usuarioLogado.id}`, {
+                method: 'PATCH', // PATCH altera apenas um campo específico
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ senha: novaSenha })
+            });
+            alert('Senha alterada com sucesso!');
+            passwordModal.style.display = 'none';
+        } catch (error) {
+            console.error('Erro ao alterar a senha:', error);
+            alert('Erro ao salvar a nova senha.');
+        }
+    });
+
+});
+
+// 📌 Baixar os dados do usuário em um arquivo
+function baixarDados(usuario) {
+    const doc = `
+        Nome: ${usuario.nome}
+        E-mail: ${usuario.email}
+        Idade: ${usuario.idade}
+        Gênero: ${usuario.genero}
+        Endereço: ${usuario.endereco}
+        Renda: ${usuario.renda}
+        Cômodos: ${usuario.comodos}
+        Acesso à Internet: ${usuario.acesso_internet}
+    `;
+
+    const blob = new Blob([doc], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'dados_usuario.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}

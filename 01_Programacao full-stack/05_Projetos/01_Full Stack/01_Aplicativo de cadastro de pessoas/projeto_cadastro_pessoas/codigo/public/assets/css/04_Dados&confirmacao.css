@@ -1,11 +1,6 @@
-/*
-DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
-npm start 
-*/
-
 /* Body */
 body {
-    
+    overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #E8F0F2;
     margin: 0;
@@ -35,8 +30,8 @@ body {
 .profile-container {
     border-radius: 10px;
     padding: 10px;
-    margin-left: 25em;
-    margin-right: 25em;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .profile-header {
@@ -45,9 +40,9 @@ body {
     padding: 20px;
     text-align: center;
     border-radius: 30px;
-    font-size: 24px;
-    margin-left: 25em;
-    margin-right: 25em;
+    font-size: 28px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .profile-item {
@@ -120,13 +115,13 @@ body {
 
 .profile-itemBtn button {
     background-color: #76cad8;
-    border: 2px solid #00A4CC;
+    border: 3px solid #00A4CC;
+    padding: 10px 20px;
     border-radius: 30px;
     width: 300px;
-    height: 30px;
-    font-size: 20px;
-    padding: 8px 12px;
-    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    font-size: 27px;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -135,7 +130,7 @@ body {
 
 .btn {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
 }
 
@@ -224,6 +219,16 @@ body {
     top: 11.5px;
 }
 
+.form-control {
+    width: 50%;
+    padding: 12px 15px;
+    border: 2px solid #00BFFF;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #E8F0F2;
+    color: #333;
+}
+
 #save-changes, #save-password {
     background-color: #00A4CC;
     color: white;
@@ -253,27 +258,148 @@ body {
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
-    .sidebar {
-        width: auto;
-        min-width: 40vh;
+@media (max-width: 1280px) {
+    .profile-container {
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
-    .main-content {
-        margin-left: 225px;
+    .profile-header {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .profile-item span {
+        width: 250px;
+    }
+
+    .profile-item button {
+        width: 250px;
+    }
+
+    .profile-itemBtn button {
+        width: 250px;
     }
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: auto;
-        min-width: 40vh;
-        height: auto;
-        position: relative;
+@media (max-width: 1024px) {
+    .profile-container {
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     .main-content {
         margin-left: 0;
         margin-right: 0;
+    }
+
+    .profile-header {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .profile-item span {
+        width: 200px;
+    }
+
+    .profile-item button {
+        width: 200px;
+    }
+
+    .profile-itemBtn button {
+        width: 200px;
+    }
+
+    .form-group-N input {
+        width: 250px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .profile-container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .profile-header {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .profile-item span {
+        width: 180px;
+    }
+
+    .profile-item button {
+        width: 180px;
+    }
+
+    .profile-itemBtn button {
+        width: 180px;
+    }
+
+    .form-group-N input {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .profile-header {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .profile-item span {
+        width: 150px;
+    }
+
+    .profile-item button {
+        width: 150px;
+    }
+
+    .profile-itemBtn button {
+        width: 150px;
+    }
+
+    .form-group-N input {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-header {
+        font-size: 20px;
+    }
+
+    .profile-item {
+        font-size: 18px;
+    }
+
+    .profile-item span {
+        font-size: 18px;
     }
 }
