@@ -51,8 +51,31 @@
                 <input type="text" name="txt_endereco" id="txt_endereco" class="form-control" required>
                 <span class="star">✦</span>
             </div>
-
-            <!-- Novo campo de CPF -->
+            <div class="form-group-N">
+                <label for="txt_telefone" class="text-info">Número de Telefone</label>
+                <input type="text" name="txt_telefone" id="txt_telefone" class="form-control" required>
+                <span class="star">✦</span>
+            </div>
+            
+            <!-- Script para formatar o número de telefone -->
+            <script>
+                function formatarTelefone(telefone) {
+                    telefone = telefone.replace(/\D/g, '');
+            
+                    if (telefone.length <= 10) {
+                        telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+                    } else {
+                        telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+                    }
+            
+                    return telefone;
+                }
+            
+                document.getElementById('txt_telefone').addEventListener('input', function (e) {
+                    e.target.value = formatarTelefone(e.target.value);
+                });
+            </script>
+            
             <div class="form-group-N">
                 <label for="txt_cpf" class="text-info">CPF</label>
                 <input type="text" name="txt_cpf" id="txt_cpf" class="form-control" placeholder="Digite seu CPF" required>

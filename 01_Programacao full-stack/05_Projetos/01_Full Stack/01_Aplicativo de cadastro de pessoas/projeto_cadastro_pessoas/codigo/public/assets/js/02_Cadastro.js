@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function salvaLogin(event) {
         event.preventDefault();
-    
+
         const nome = document.getElementById('txt_nome').value;
         const email = document.getElementById('txt_email').value;
         const idade = document.getElementById('txt_idade').value;
@@ -20,17 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const renda = document.getElementById('txt_renda').value;
         const comodos = document.getElementById('txt_comodos').value;
         const acesso_internet = document.getElementById('txt_acesso_internet').value;
-    
+
         const cpf = document.getElementById('txt_cpf').value; // Novo campo CPF
         const dataNascimento = document.getElementById('txt_dtnasc').value; // Corrigido o ID aqui
-    
+        const telefone = document.getElementById('txt_telefone').value; // Novo campo Telefone
+
         if (senha !== senha2) {
             alert('As senhas não conferem.');
             return;
         }
-    
+
         const nextId = await getNextUserId();
-    
+
         const usuario = {
             id: nextId,
             nome,
@@ -43,16 +44,17 @@ document.addEventListener('DOMContentLoaded', function () {
             comodos,
             acesso_internet,
             cpf, 
-            dataNascimento 
+            dataNascimento,
+            telefone // Adicionando o telefone
         };
-    
+
         try {
             await fetch(SERVER_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(usuario),
             });
-    
+
             gerarPDF(usuario);
             document.getElementById('login-form').reset();
             alert('Usuário cadastrado com sucesso!');
@@ -60,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Erro ao cadastrar usuário: ' + error);
         }
     }
-    
 
     function gerarPDF(usuario) {
         const { jsPDF } = window.jspdf;
@@ -79,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         doc.text(`Acesso à Internet: ${usuario.acesso_internet}`, 20, 110);
         doc.text(`CPF: ${usuario.cpf}`, 20, 120); 
         doc.text(`Data de Nascimento: ${usuario.dataNascimento}`, 20, 130); 
+        doc.text(`Telefone: ${usuario.telefone}`, 20, 140); // Exibe o telefone no PDF
 
         doc.save(`Cadastro_${usuario.nome}.pdf`);
     }

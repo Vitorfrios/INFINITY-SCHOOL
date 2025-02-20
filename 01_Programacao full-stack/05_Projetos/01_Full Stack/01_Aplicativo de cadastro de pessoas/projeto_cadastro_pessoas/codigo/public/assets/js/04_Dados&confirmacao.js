@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let usuarioLogado = await obterUsuarioLogado();
 
     if (!usuarioLogado) {
-        alert('Nenhum usuário logado encontrado.');
+        alert('Redirecionando...');
         window.location.href = '01_Inicio_logo.html';
         return;
     }
@@ -76,7 +76,7 @@ async function obterUsuarioLogado() {
 // Atualiza os dados do usuário no servidor
 function atualizarExibicao(usuario) {
     if (!usuario) {
-        alert('Erro: Usuário não encontrado.');
+        alert('03-redirecionando');
         return;
     }
 
@@ -176,11 +176,7 @@ async function atualizarUsuario(usuario) {
 document.addEventListener('DOMContentLoaded', () => {
     const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado'));
 
-    if (!usuarioLogado) {
-        alert('Nenhum usuário logado encontrado.');
-        window.location.href = '01_Inicio_logo.html';
-        return;
-    }
+
 
     // MODAL DE ALTERAÇÃO DE SENHA
     const passwordModal = document.getElementById('password-modal');
@@ -290,13 +286,47 @@ function baixarDados(usuario) {
 }
 
 
-function sair() {
-    alert('Você saiu da conta!');
-    localStorage.removeItem("usuario_logado");
-
-    window.location.href = "01_Inicio_logo.html";    
-}
 
 
 
+// Aguarda o DOM carregar antes de associar o evento
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logout-btn");
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", async () => {
+            try {
+                // Primeiro, obtemos o ID do usuário logado
+                const responseGet = await fetch(LOGADO_URL);
+                const data = await responseGet.json();
+
+                if (data.length > 0) {
+                    const userId = data[0].id; // Pega o ID do primeiro usuário logado
+
+                    // Remove o usuário logado
+                    const responseDelete = await fetch(`${LOGADO_URL}/${userId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (responseDelete.ok) {
+                        // Limpa os dados do navegador
+                        localStorage.clear();
+                        sessionStorage.clear();
+
+                        alert("Logout realizado com sucesso!");
+
+
+                    } else {
+                        alert("Erro ao fazer logout. Tente novamente.");
+                    }
+                } else {
+                    alert("01-redirecionando");
+                }
+            } catch (error) {
+                console.error("Erro na requisição:", error);
+                alert("Erro na conexão com o servidor.");
+            }
+        });
+    }
+});
 

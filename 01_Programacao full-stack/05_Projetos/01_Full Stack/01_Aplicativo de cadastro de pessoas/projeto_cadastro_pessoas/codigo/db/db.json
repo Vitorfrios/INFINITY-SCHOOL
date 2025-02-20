@@ -13,22 +13,21 @@
       "acesso_internet": "Não",
       "cpf": "123.456.789.00",
       "dataNascimento": "2003-01-02"
+    },
+    {
+      "id": 2,
+      "nome": "Vitor",
+      "email": "vitor@gmail.com",
+      "idade": "12",
+      "genero": "Masculino",
+      "endereco": "123132",
+      "senha": "12",
+      "renda": "R$ 321,32",
+      "comodos": "23",
+      "acesso_internet": "Sim",
+      "cpf": "123.123.312.31",
+      "dataNascimento": "275760-03-21"
     }
   ],
-  "usuario_logado": [
-    {
-      "id": 1,
-      "nome": "NOME TESTE1",
-      "email": "TESTE@GMAIL.COM",
-      "idade": "122",
-      "genero": "Feminino",
-      "endereco": "ENDEREÇO TESTE",
-      "senha": "11",
-      "renda": "R$ 1.234,45",
-      "comodos": "1",
-      "acesso_internet": "Não",
-      "cpf": "123.456.789.00",
-      "dataNascimento": "2003-01-02"
-    }
-  ]
+  "usuario_logado": []
 }

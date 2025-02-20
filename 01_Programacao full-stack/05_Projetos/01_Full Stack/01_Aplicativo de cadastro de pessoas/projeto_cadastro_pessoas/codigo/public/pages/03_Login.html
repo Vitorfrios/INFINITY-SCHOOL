@@ -30,73 +30,7 @@
                                 <input type="password" name="password" id="password" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC; padding-right: 30px;">
                                 <i id="toggle-password" class="fa fa-eye"></i>
                                 
-                                <script>
-                                    const passwordField = document.getElementById('password');
-                                    const togglePasswordIcon = document.getElementById('toggle-password');
 
-                                    togglePasswordIcon.addEventListener('click', function() {
-                                        const type = passwordField.type === 'password' ? 'text' : 'password';
-                                        passwordField.type = type;
-
-                                        this.classList.toggle('fa-eye');
-                                        this.classList.toggle('fa-eye-slash');
-                                    });
-
-                                    // Função para exibir o formulário de recuperação de senha
-                                    function esqueciSenha() {
-                                        // Exibe o formulário de email para recuperação de senha
-                                        const formHTML = `
-                                            <div class="form-group">
-                                                <label for="recovery-email" class="text-info">Digite seu Email para recuperação</label><br>
-                                                <input type="email" id="recovery-email" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC;">
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;" onclick="enviarInstrucoes()">Enviar</button>
-                                            </div>
-                                        `;
-                                        const container = document.getElementById('login-box');
-                                        container.innerHTML = formHTML;
-                                    }
-
-                                    // Função para enviar instruções de recuperação de senha
-                                    function enviarInstrucoes() {
-                                        const recoveryEmail = document.getElementById('recovery-email').value;
-                                        if (recoveryEmail) {
-                                            alert('Instruções enviadas para o seu email: ' + recoveryEmail);
-                                           
-                                            setTimeout(resetLoginForm, 1000); 
-                                        } else {
-                                            alert('Por favor, insira um email válido.');
-                                        }
-                                    }
-
-                                    // Função para resetar o formulário de login
-                                    function resetLoginForm() {
-                                        const formHTML = `
-                                            <div class="container2">
-                                                <img src="../assets/images/logo.png" alt="logo">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email" class="text-info">Email</label><br>
-                                                <input type="email" name="email" id="email" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC;">
-                                            </div>
-                                            <div class="form-group" style="position: relative;">
-                                                <label for="password" class="text-info">Senha</label><br>
-                                                <input type="password" name="password" id="password" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC; padding-right: 30px;">
-                                                <i id="toggle-password" class="fa fa-eye"></i>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-link" style="border-radius: 10px; color: #00A4CC; text-decoration: none;" onclick="esqueciSenha()">Esqueci a Senha</button>
-                                            </div>
-                                            <div class="form-group d-flex justify-content-between">
-                                                <a href="./02_Cadastro.html"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="border-radius: 10px; border: 2px solid #00A4CC;">Novo usuário</button></a>
-                                                <a id="btn-login" class="btn btn-info btn-md" style="border-radius: 10px; border: 2px solid #00A4CC; color: white;" disabled>Login</a>
-                                            </div>
-                                        `;
-                                        const container = document.getElementById('login-box');
-                                        container.innerHTML = formHTML;
-                                    }
-                                </script>
                             </div>
 
                             <!--Botão de Esqueci a Senha -->
