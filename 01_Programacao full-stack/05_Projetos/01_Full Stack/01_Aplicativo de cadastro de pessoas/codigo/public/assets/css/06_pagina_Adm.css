@@ -56,12 +56,10 @@ body {
     font-size: 24px;
     margin-bottom: 20px;
 }
-.filtros {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-}
 
+
+
+/* Estilo padrão dos botões de filtro */
 .filtros button {
     background-color: #76cad8;
     border: 2px solid #00A4CC;
@@ -69,12 +67,23 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 20px;
 }
 
+/* Estilo quando o botão está ativo */
+.filtros button.active {
+    background-color: #0041cc;
+    color: white;
+}
+
+/* Efeito hover */
 .filtros button:hover {
     background-color: #00A4CC;
     color: white;
 }
+
 #inscricoes-list {
     display: flex;
     flex-direction: column;
@@ -90,7 +99,20 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
 
+.nome-cpf {
+    font-size: 16px;
+}
+
+.status {
+    font-size: 16px;
+    color: #555; 
+}
 .inscricao-item span {
     font-size: 18px;
 }

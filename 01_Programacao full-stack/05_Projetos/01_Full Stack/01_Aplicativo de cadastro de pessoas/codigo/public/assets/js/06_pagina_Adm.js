@@ -1,8 +1,3 @@
-/*
-DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
-npm start 
-*/
-
 const API_URL = 'http://localhost:3000/usuarios';
 
 const inscricoesList = document.getElementById('inscricoes-list');
@@ -11,7 +6,7 @@ const editModal = document.getElementById('editModal');
 const editForm = document.getElementById('editForm');
 const closeModal = document.querySelector('.close');
 
-let currentEditId = null; 
+let currentEditId = null;
 
 // Função para buscar inscrições com filtro de status
 async function fetchInscricoes(status = null) {
@@ -38,15 +33,70 @@ function renderInscricoes(inscricoes) {
         const inscricaoItem = document.createElement('div');
         inscricaoItem.className = 'inscricao-item';
         inscricaoItem.innerHTML = `
-            <span>${inscricao.nome} - ${inscricao.cpf} (Status: ${inscricao.status || 'pendente'})</span>
-            <div>
+            <div class="info">
+                <span class="nome-cpf">${inscricao.nome} - ${inscricao.cpf}</span>
+                <span class="status">Status: ${inscricao.status || 'pendente'}</span>
+            </div>
+            <div class="acoes">
                 <button onclick="editInscricao(${inscricao.id})">Editar</button>
                 <button onclick="approveInscricao(${inscricao.id})">Aprovar</button>
                 <button onclick="reproveInscricao(${inscricao.id})">Reprovar</button>
+                <button onclick="gerarPDF(${inscricao.id})">Baixar PDF</button>
             </div>
         `;
         inscricoesList.appendChild(inscricaoItem);
     });
+}
+
+// Função para gerar e baixar o PDF
+async function gerarPDF(id) {
+    try {
+        const response = await fetch(`${API_URL}/${id}`);
+        const inscricao = await response.json();
+
+        if (inscricao) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(18);
+            doc.text("Detalhes da Inscrição", 20, 20);
+
+            
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(12);
+            let y = 30;
+            doc.text(`Nome: ${inscricao.nome}`, 20, y);
+            y += 10;
+            doc.text(`Email: ${inscricao.email}`, 20, y);
+            y += 10;
+            doc.text(`Idade: ${inscricao.idade}`, 20, y);
+            y += 10;
+            doc.text(`Gênero: ${inscricao.genero}`, 20, y);
+            y += 10;
+            doc.text(`Endereço: ${inscricao.endereco}`, 20, y);
+            y += 10;
+            doc.text(`Renda: ${inscricao.renda}`, 20, y);
+            y += 10;
+            doc.text(`Cômodos: ${inscricao.comodos}`, 20, y);
+            y += 10;
+            doc.text(`Acesso à Internet: ${inscricao.acesso_internet}`, 20, y);
+            y += 10;
+            doc.text(`CPF: ${inscricao.cpf}`, 20, y);
+            y += 10;
+            doc.text(`Data de Nascimento: ${inscricao.dataNascimento}`, 20, y);
+            y += 10;
+            doc.text(`Telefone: ${inscricao.telefone}`, 20, y);
+            y += 10;
+            doc.text(`Status: ${inscricao.status || 'pendente'}`, 20, y);
+
+            
+            doc.save(`Inscricao_${inscricao.nome}.pdf`);
+        }
+    } catch (error) {
+        console.error('Erro ao gerar PDF:', error);
+    }
 }
 
 // Função para editar uma inscrição
@@ -186,5 +236,44 @@ window.addEventListener('click', function (event) {
     }
 });
 
+// Função para filtrar inscrições e destacar o botão selecionado
+function filtrarInscricoes(status = null) {
+    
+    const botoes = document.querySelectorAll('.filtros button');
+    botoes.forEach(botao => botao.classList.remove('active'));
+
+    
+    if (status === null) {
+        document.querySelector('.filtros button:nth-child(1)').classList.add('active');
+    } else if (status === 'aprovado') {
+        document.querySelector('.filtros button:nth-child(2)').classList.add('active');
+    } else if (status === 'reprovado') {
+        document.querySelector('.filtros button:nth-child(3)').classList.add('active');
+    }
+
+    
+    fetchInscricoes(status);
+}
+
+// Função para buscar inscrições com filtro de status
+async function fetchInscricoes(status = null) {
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        let filteredData = data;
+
+        
+        if (status) {
+            filteredData = data.filter(inscricao => inscricao.status === status);
+        }
+
+        renderInscricoes(filteredData);
+    } catch (error) {
+        console.error('Erro ao buscar inscrições:', error);
+    }
+}
+
 // Carregar as inscrições ao iniciar
-document.addEventListener('DOMContentLoaded', fetchInscricoes);
+document.addEventListener('DOMContentLoaded', () => {
+    filtrarInscricoes(); 
+});
