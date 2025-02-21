@@ -1,60 +1,43 @@
-# **Projeto Aplicativo de cadastro de pessoas**
 
-## Briefing: Aplicativo Mobile de Cadastro de Pessoas Carentes para Programa Social
+# **Projeto: Aplicativo de Cadastro de Pessoas**
 
-## Contratante
+Este projeto é um **aplicativo de cadastro de pessoas** onde os usuários podem preencher seus dados pessoais e esses dados são armazenados para posterior consulta. O sistema foi desenvolvido utilizando tecnologias simples e é de fácil instalação e uso.
 
-* **Empresa: Governo**
-* **Dono: [inserir nome]**
-* **Número de funcionários: [inserir número]**
+## 🚀 **Instruções para Iniciar**
 
-## Detalhes do Projeto
+Para iniciar o sistema, siga os passos abaixo:
 
-* **Prazo máximo de entrega: 60 dias**
-* **Linguagens permitidas:**
-* **JavaScript**
-* **Python (Flask ou Django)**
-* **React**
-* **React Native**
-* **MySQL ou Node**
-* **Entrega: Arquivo em .ZIP com todas as páginas HTML, imagens e outros arquivos necessários para execução local**
+### 1. **Inicie o Servidor**
 
-## Objetivo
+Basta digitar o seguinte comando no terminal para iniciar o servidor:
 
-**Desenvolver um aplicativo mobile para cadastro de pessoas carentes, coletando dados e armazenando-os em um banco de dados seguro, gerando um arquivo PDF com informações de cada inscrito.**
+```bash
+npm start
+```
 
-## Requisitos Funcionais
+As dependências necessárias para o código funcionar serão baixadas automaticamente. O sistema estará disponível no endereço `http://localhost:3000`.
 
-* **Cadastro de Usuário**
-* **Permite cadastro com informações pessoais (nome, idade, gênero, endereço, etc.)** foi
-* **Criação de conta com credenciais de acesso (e-mail e senha)** foi
-* ---
-* **Coleta de Dados**
-* **Formulário de inscrição com campos intuitivos para coletar informações socioeconômicas** foi
-* **Consideração para usuários com pouca familiaridade com tecnologia** foi
-* ---
-* **Armazenamento de Dados**
-* **Banco de dados seguro e confiável** foi
-* **Mecanismos de segurança para proteger dados contra acesso não autorizado** foi
-* ---
-* **Gerenciamento de Inscrições**a fz pg login e 04
-* **Interface para administradores visualizarem, editarem e aprovarem inscrições** 
-* **Pesquisa e filtragem de inscrições por critérios específicos**
-* ---
-* **Geração de PDF** a fz pg 04
-* **Capacidade de gerar arquivo PDF com informações do inscrito** 
-* **Formato claro e organizado para impressão ou compartilhamento** 
+## 📝 **Funcionalidades**
 
-## Requisitos Não Funcionais
+* **Cadastro de Pessoas** : O usuário pode preencher seu nome, email, idade, entre outros dados, e esses serão registrados no sistema.
+* **Armazenamento Local** : Os dados são armazenados em um arquivo **JSON** e podem ser consultados dentro do próprio aplicativo.
+* **Interface Simples e Intuitiva** : A interface foi projetada para ser simples e fácil de usar com  **HTML** ,  **CSS** , e  **JavaScript** .
 
-* **Interface de Usuário Intuitiva**s
-* **Fácil utilização considerando falta de familiaridade com dispositivos móveis**s
-* **Disponibilidade Offline**s
-* **Funcionamento offline com sincronização automática ao conectar à internet**s
-* **Compatibilidade**s
-* **Compatível com Android e iOS**s
-* **Segurança**s
-* **Práticas de criptografia e autenticação adequadas**s
-* **Escalabilidade**s
-* **Projeto para lidar com grande número de inscrições e crescimento futuro**s
+## 🛠️ **Tecnologias Utilizadas**
 
+* **HTML** : Para estruturação da página web.
+* **CSS** : Para estilização e layout da página.
+* **JavaScript** : Para interatividade e manipulação dos dados.
+* **JSON** : Para armazenar os dados de forma local.
+
+## 📅 **Tempo de Desenvolvimento**
+
+Este sistema foi desenvolvido em  **4 dias** . Durante esse período, a equipe focou em criar uma aplicação simples e funcional para atender à necessidade de cadastro de pessoas.
+
+## 🧑‍💻 **Desenvolvedores**
+
+Este projeto foi desenvolvido por:
+
+* Vitor de Freitas Rios
+
+---
