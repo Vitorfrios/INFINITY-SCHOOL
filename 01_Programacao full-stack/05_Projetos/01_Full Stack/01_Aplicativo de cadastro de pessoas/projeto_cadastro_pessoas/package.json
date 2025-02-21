@@ -4,9 +4,9 @@
   "description": "Laboratório de aplicação Web com backend baseado no JSON Server",
   "main": "index.js",
   "scripts": {
-    "server1": "json-server --watch codigo/db/db.json --port 3000",
+    "server": "json-server --watch codigo/db/db.json --port 3000",
     "prestart": "npm install",
-    "start": "npx concurrently \"npx live-server codigo --open=/public/pages/01_Inicio_logo.html\" \"npm run server1\" \"npm run server2\""
+    "start": "npx concurrently \"npx live-server codigo --open=/public/pages/01_Inicio_logo.html\" \"npm run server\""
   },
   "keywords": [],
   "author": "Vitor de Freitas Rios",

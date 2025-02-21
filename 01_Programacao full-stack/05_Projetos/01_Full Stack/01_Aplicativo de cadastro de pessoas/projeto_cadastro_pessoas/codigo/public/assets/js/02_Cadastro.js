@@ -21,15 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const comodos = document.getElementById('txt_comodos').value;
         const acesso_internet = document.getElementById('txt_acesso_internet').value;
 
-        const cpf = document.getElementById('txt_cpf').value; // Novo campo CPF
-        const dataNascimento = document.getElementById('txt_dtnasc').value; // Corrigido o ID aqui
-        const telefone = document.getElementById('txt_telefone').value; // Novo campo Telefone
+        const cpf = document.getElementById('txt_cpf').value; 
+        const dataNascimento = document.getElementById('txt_dtnasc').value; 
+        const telefone = document.getElementById('txt_telefone').value; 
 
         if (senha !== senha2) {
             alert('As senhas não conferem.');
             return;
         }
-
+        // Verifica se ambas as senhas têm pelo menos 6 caracteres
+        if (senha.length < 6 || senha2.length < 6) {
+            alert('Ambas as senhas devem ter pelo menos 6 caracteres.');
+            return;
+        }
         const nextId = await getNextUserId();
 
         const usuario = {
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             acesso_internet,
             cpf, 
             dataNascimento,
-            telefone // Adicionando o telefone
+            telefone 
         };
 
         try {
@@ -80,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         doc.text(`Acesso à Internet: ${usuario.acesso_internet}`, 20, 110);
         doc.text(`CPF: ${usuario.cpf}`, 20, 120); 
         doc.text(`Data de Nascimento: ${usuario.dataNascimento}`, 20, 130); 
-        doc.text(`Telefone: ${usuario.telefone}`, 20, 140); // Exibe o telefone no PDF
+        doc.text(`Telefone: ${usuario.telefone}`, 20, 140); 
 
         doc.save(`Cadastro_${usuario.nome}.pdf`);
     }

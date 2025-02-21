@@ -59,21 +59,24 @@
             
             <!-- Script para formatar o número de telefone -->
             <script>
-                function formatarTelefone(telefone) {
-                    telefone = telefone.replace(/\D/g, '');
-            
-                    if (telefone.length <= 10) {
-                        telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
-                    } else {
+                function formatarCelular(telefone) {
+                    telefone = telefone.replace(/\D/g, ''); // Remove tudo que não for número
+
+                    if (telefone.length > 11) {
+                        telefone = telefone.slice(0, 11); // Limita a 11 dígitos
+                    }
+
+                    if (telefone.length === 11) { // Apenas para celulares
                         telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
                     }
-            
+
                     return telefone;
                 }
-            
+
                 document.getElementById('txt_telefone').addEventListener('input', function (e) {
-                    e.target.value = formatarTelefone(e.target.value);
+                    e.target.value = formatarCelular(e.target.value);
                 });
+
             </script>
             
             <div class="form-group-N">
