@@ -245,13 +245,14 @@ function filtrarInscricoes(status = null) {
     
     if (status === null) {
         document.querySelector('.filtros button:nth-child(1)').classList.add('active');
-    } else if (status === 'aprovado') {
+    } else if (status === 'pendente') {
         document.querySelector('.filtros button:nth-child(2)').classList.add('active');
-    } else if (status === 'reprovado') {
+    } else if (status === 'aprovado') {
         document.querySelector('.filtros button:nth-child(3)').classList.add('active');
+    } else if (status === 'reprovado') {
+        document.querySelector('.filtros button:nth-child(4)').classList.add('active');
     }
 
-    
     fetchInscricoes(status);
 }
 
