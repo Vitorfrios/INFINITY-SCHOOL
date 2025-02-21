@@ -1,3 +1,7 @@
+/*
+DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
+npm start 
+*/
 document.addEventListener('DOMContentLoaded', function () {
     const ADM_URL = 'http://localhost:3000/adm';
 
@@ -15,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Redirecionar ao clicar no botão Login 
     document.getElementById('btn-login').addEventListener('click', async (event) => {
-        event.preventDefault(); // Impede o envio do formulário
+        event.preventDefault(); 
 
         const login = document.getElementById('text-adm').value;
         const senha = document.getElementById('password').value;

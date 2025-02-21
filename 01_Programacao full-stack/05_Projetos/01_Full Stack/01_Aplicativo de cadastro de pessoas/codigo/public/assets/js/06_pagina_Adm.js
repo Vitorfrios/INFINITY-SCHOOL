@@ -1,4 +1,8 @@
-// URL base do JSON Server
+/*
+DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
+npm start 
+*/
+
 const API_URL = 'http://localhost:3000/usuarios';
 
 const inscricoesList = document.getElementById('inscricoes-list');

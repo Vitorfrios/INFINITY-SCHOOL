@@ -1,3 +1,7 @@
+/*
+DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
+npm start 
+*/
 const SERVER_URL = 'http://localhost:3000/usuarios';
 const LOGADO_URL = 'http://localhost:3000/usuario_logado';
 

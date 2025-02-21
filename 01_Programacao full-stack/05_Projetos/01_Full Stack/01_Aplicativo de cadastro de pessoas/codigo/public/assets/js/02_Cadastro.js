@@ -1,3 +1,8 @@
+/*
+DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
+npm start 
+*/
+
 document.addEventListener('DOMContentLoaded', function () {
     const SERVER_URL = 'http://localhost:3000/usuarios';
 

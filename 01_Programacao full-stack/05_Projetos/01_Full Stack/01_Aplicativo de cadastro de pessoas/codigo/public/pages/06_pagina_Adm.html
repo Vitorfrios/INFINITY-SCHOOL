@@ -1,3 +1,7 @@
+<!--
+DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
+npm start
+-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,11 +17,11 @@
             <input type="text" id="search" placeholder="Pesquisar por CPF">
             <script>
                 document.getElementById("search").addEventListener("input", function (e) {
-                    let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
+                    let value = e.target.value.replace(/\D/g, ""); 
 
-                    if (value.length > 11) value = value.slice(0, 11); // Limita a 11 dígitos
+                    if (value.length > 11) value = value.slice(0, 11); 
 
-                    // Aplica a máscara no formato XXX.XXX.XXX.XX
+                    
                     if (value.length > 9) {
                         value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3.$4");
                     } else if (value.length > 6) {
