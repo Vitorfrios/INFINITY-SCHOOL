@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
             acesso_internet,
             cpf, 
             dataNascimento,
-            telefone 
+            telefone,
+            status: "pendente" 
         };
 
         try {

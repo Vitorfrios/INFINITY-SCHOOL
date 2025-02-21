@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Inscrições</title>
+    <link rel="stylesheet" href="../assets/css/06_pagina_Adm.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="header">
+            <h1>Gerenciamento de Inscrições</h1>
+            <input type="text" id="search" placeholder="Pesquisar por CPF">
+            <script>
+                document.getElementById("search").addEventListener("input", function (e) {
+                    let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
+
+                    if (value.length > 11) value = value.slice(0, 11); // Limita a 11 dígitos
+
+                    // Aplica a máscara no formato XXX.XXX.XXX.XX
+                    if (value.length > 9) {
+                        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3.$4");
+                    } else if (value.length > 6) {
+                        value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
+                    } else if (value.length > 3) {
+                        value = value.replace(/(\d{3})(\d{1,3})/, "$1.$2");
+                    }
+
+                    e.target.value = value;
+                });
+
+            </script>
+        </div>
+        <div class="profile-container">
+            <div class="profile-header">
+                <span>Lista de Inscrições</span>
+            </div>
+            <div class="filtros">
+                <button onclick="fetchInscricoes()">Todas</button>
+                <button onclick="fetchInscricoes('aprovado')">Aprovadas</button>
+                <button onclick="fetchInscricoes('reprovado')">Reprovadas</button>
+            </div>
+            <div id="inscricoes-list"></div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Inscrição -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">Editar Inscrição</div>
+            <form id="editForm">
+                <div class="form-group-N">
+                    <label for="editNome">Nome:</label>
+                    <input type="text" id="editNome" name="nome" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" name="email" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editIdade">Idade:</label>
+                    <input type="number" id="editIdade" name="idade" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editGenero">Gênero:</label>
+                    <select id="editGenero" name="genero" required>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group-N">
+                    <label for="editEndereco">Endereço:</label>
+                    <input type="text" id="editEndereco" name="endereco" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editRenda">Renda:</label>
+                    <input type="text" id="editRenda" name="renda" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editComodos">Cômodos:</label>
+                    <input type="number" id="editComodos" name="comodos" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editInternet">Acesso à Internet:</label>
+                    <select id="editInternet" name="acesso_internet" required>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+                <div class="form-group-N">
+                    <label for="editCPF">CPF:</label>
+                    <input type="text" id="editCPF" name="cpf" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editDataNascimento">Data de Nascimento:</label>
+                    <input type="date" id="editDataNascimento" name="dataNascimento" required>
+                </div>
+                <div class="form-group-N">
+                    <label for="editTelefone">Telefone:</label>
+                    <input type="text" id="editTelefone" name="telefone" required>
+                </div>
+                <button type="submit" id="save-changes">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/06_pagina_Adm.js"></script>
+</body>
+</html>

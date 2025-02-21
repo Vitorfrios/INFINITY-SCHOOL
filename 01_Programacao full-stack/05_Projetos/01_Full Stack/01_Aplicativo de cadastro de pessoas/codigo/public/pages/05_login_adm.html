@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login-Adm</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/03_Login.css">
@@ -17,39 +17,24 @@
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" method="post" onsubmit="loginUser(this)">
+                        <form id="login-form" class="form" method="post">
                             <div class="container2">
                                 <img src="../assets/images/logo.png" alt="logo">
                             </div>
+                            <h3>Login-Adm</h3>
+                            <br>
                             <div class="form-group">
-                                <label for="email" class="text-info">Email</label><br>
-                                <input type="email" name="email" id="email" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC; font-size: 25px;">
+                                <label for="text-adm" class="text-info">Login</label><br>
+                                <input type="text" name="text" id="text-adm" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC; font-size: 25px;">
                             </div>
                             <div class="form-group" style="position: relative;">
                                 <label for="password" class="text-info">Senha</label><br>
                                 <input type="password" name="password" id="password" class="form-control" style="border-radius: 30px; border: 2px solid #00A4CC; padding-right: 30px; font-size: 25px;">
                                 <i id="toggle-password" class="fa fa-eye"></i>
-                                
-
                             </div>
-
-                            <!--Botão de Esqueci a Senha -->
-                            <div class="form-group">
-                                <button type="button" class="btn btn-link" style="border-radius: 10px; color: #00A4CC; text-decoration: none; font-size: 23px;" onclick="esqueciSenha()">Esqueci a Senha</button>
-                            </div>
-
                             <div class="form-group d-flex justify-content-between">
-                                <a href="./02_Cadastro.html">
-                                    <button type="button" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC; font-size: 20px;">Novo usuário</button>
-                                </a>
-                                <button type="button" id="btn-login" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;font-size: 20px;" disabled>Login</button>
-                                <a href="./05_login_adm.html">
-                                    <button type="button" id="btn-adm" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;font-size: 20px;">Login Adm</button>
-
-                                </a>
-
+                                <button type="button" id="btn-login" class="btn btn-info" style="border-radius: 10px; border: 2px solid #00A4CC;font-size: 20px;">Login</button>
                             </div>
-                            
                         </form>
                     </div>
                 </div>
@@ -57,7 +42,7 @@
         </div>
     </div>    
 
-    <script src="../assets/js/03_Login.js"></script>
+    <script src="../assets/js/05_login_adm.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

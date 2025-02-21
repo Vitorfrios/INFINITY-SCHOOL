@@ -74,7 +74,8 @@ function atualizarExibicao(usuario) {
     document.getElementById('acesso_internet').textContent = usuario.acesso_internet;
     document.getElementById('cpf').textContent = usuario.cpf;
     document.getElementById('telefone').textContent = usuario.telefone;
-    
+    document.getElementById('status').textContent = usuario.status;
+
     const dataNascimento = new Date(usuario.dataNascimento);
     document.getElementById('data_nascimento').textContent = dataNascimento.toLocaleDateString('pt-BR');
 }
@@ -265,6 +266,7 @@ function baixarDados(usuario) {
         `Renda: ${usuario.renda}`,
         `Cômodos: ${usuario.comodos}`,
         `Acesso à Internet: ${usuario.acesso_internet}`,
+        `Status da inscrição:${usuario.status} `
     ];
 
     
