@@ -1,46 +1,29 @@
+# Script para criar a estrutura de pastas e arquivos usando Python
+
 import os
 
-# Definindo a nova estrutura de pastas e arquivos para o frontend
-frontend_structure = {
-    "frontend": {
-        "public": {
-            "index.html": ""
-        },
-        "src": {
-            "components": {
-                "EmailForm.js": "",
-                "EmailList.js": "",
-                "Dashboard.js": ""
-            },
-            "pages": {
-                "HomePage.js": "",
-                "EmailPage.js": ""
-            },
-            "services": {
-                "emailService.js": ""
-            },
-            "styles": {
-                "styles.css": ""
-            },
-            "App.js": "",
-            "index.js": "",
-            "App.css": ""
-        },
-        "package.json": ""
-    }
-}
+structure = [
+    'email_marketing/',
+    'email_marketing/app/',
+    'email_marketing/app/__init__.py',
+    'email_marketing/app/models.py',
+    'email_marketing/app/routes.py',
+    'email_marketing/app/utils.py',
+    'email_marketing/config.py',
+    'email_marketing/requirements.txt',
+    'email_marketing/run.py',
+    'email_marketing/README.md',
+]
 
-def create_structure(base_path, structure):
-    for name, content in structure.items():
-        path = os.path.join(base_path, name)
-        if isinstance(content, dict):
-            os.makedirs(path, exist_ok=True)
-            create_structure(path, content)  # Recursão para criar subpastas
-        else:
-            with open(path, 'w') as f:
-                f.write(content)  # Cria um arquivo vazio
+for path in structure:
+    if path.endswith('/'):
+        os.makedirs(path, exist_ok=True)
+    else:
+        with open(path, 'w') as f:
+            pass
 
-# Criando a estrutura de pastas e arquivos
-create_structure(".", frontend_structure)
+print("Estrutura de pastas e arquivos criada com sucesso!")
 
-print("Estrutura de pastas e arquivos do frontend criada com sucesso!")
+# Agora você pode rodar esse script para gerar tudo automaticamente!
+# Para rodar, salve como 'create_structure.py' e execute:
+# python create_structure.py
