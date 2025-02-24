@@ -24,7 +24,7 @@ cd email_marketing
 
 ---
 
-### Passo 2: Instale as Dependências
+### Passo 1: Instale as Dependências
 
 Instale as bibliotecas necessárias usando o arquivo `requirements.txt`:
 
@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 ---
 
-### Passo 3: Execute o Servidor Flask
+### Passo 2: Execute o Servidor Flask
 
 Inicie o servidor Flask para rodar a aplicação:
 
@@ -46,13 +46,13 @@ O servidor estará disponível em `http://localhost:5000`.
 
 ---
 
-### Passo 4: Teste as Rotas da API
+### Passo 3: Teste as Rotas da API
 
 Use ferramentas como **Postman**, **Insomnia** ou o comando `curl` para testar as rotas da API.
 
 ---
 
-## Rotas da API
+## Rotas da API no bash
 
 ### 1. Adicionar um Email
 
