@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Petshop Melhor Amigo</title>
+    <link rel="stylesheet" href="../assets/css/02_Produtos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="Logo Melhor Amigo">
+                <span>Melhor Amigo</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="01_Inicio.html">Início</a></li>
+                <li><a href="02_Produtos.html">Produtos</a></li>
+                <li><a href="03_Galeria.html">Galeria</a></li>
+                <li><a href="04_Contato.html">Contato</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seção de Produtos -->
+    <section class="produtos">
+        <h2>Nossos Produtos e Serviços</h2>
+        <div class="filtros">
+            <button class="filtro-btn active" data-categoria="todos">Todos</button>
+            <button class="filtro-btn" data-categoria="limpeza">Limpeza</button>
+            <button class="filtro-btn" data-categoria="tosa">Tosa</button>
+            <button class="filtro-btn" data-categoria="racao">Ração</button>
+        </div>
+        <div class="produtos-container">
+            <!-- Produto 1: Limpeza -->
+            <div class="produto-card" data-categoria="limpeza">
+                <img src="../assets/images/banho_completo_em_um_cachorro_em_um.jpeg" alt="Banho Relaxante">
+                <h3>Banho Relaxante</h3>
+                <p>Banho completo com produtos hipoalergênicos para deixar seu pet limpo e cheiroso.</p>
+                <button class="info-btn" data-produto="banho-relaxante">Mais Informações</button>
+            </div>
+
+            <!-- Produto 2: Tosa -->
+            <div class="produto-card" data-categoria="tosa">
+                <img src="../assets/images/tosa_higienica.jpeg" alt="Tosa Higiênica">
+                <h3>Tosa Higiênica</h3>
+                <p>Tosa profissional para manter seu pet confortável e com um visual incrível.</p>
+                <button class="info-btn" data-produto="tosa-higienica">Mais Informações</button>
+            </div>
+
+            <!-- Produto 3: Ração -->
+            <div class="produto-card" data-categoria="racao">
+                <img src="../assets/images/Premium.jpg" alt="Ração Premium">
+                <h3>Ração Premium</h3>
+                <p>Ração de alta qualidade para cães e gatos, com nutrição balanceada.</p>
+                <button class="info-btn" data-produto="racao-premium">Mais Informações</button>
+            </div>
+
+            <!-- Produto 4: Limpeza -->
+            <div class="produto-card" data-categoria="limpeza">
+                <img src="../assets/images/hidrata_o_de_pelo_de_cachorro.jpeg" alt="Hidratação">
+                <h3>Hidratação</h3>
+                <p>Hidratação profunda para pelagem macia e brilhante.</p>
+                <button class="info-btn" data-produto="hidratacao">Mais Informações</button>
+            </div>
+
+            <!-- Produto 5: Tosa -->
+            <div class="produto-card" data-categoria="tosa">
+                <img src="../assets/images/tosa.jpeg" alt="Tosa na Máquina">
+                <h3>Tosa na Máquina</h3>
+                <p>Tosa completa com máquina, ideal para raças de pelo curto.</p>
+                <button class="info-btn" data-produto="tosa-maquina">Mais Informações</button>
+            </div>
+
+            <!-- Produto 6: Ração -->
+            <div class="produto-card" data-categoria="racao">
+                <img src="../assets/images/Especial.avif" alt="Ração Especial">
+                <h3>Ração Especial</h3>
+                <p>Ração para pets com necessidades específicas, como controle de peso ou alergias.</p>
+                <button class="info-btn" data-produto="racao-especial">Mais Informações</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Detalhes do Produto -->
+    <div class="modal" id="produtoModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">Banho Relaxante</h3>
+            <p id="modal-desc">Descrição detalhada do produto.</p>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Endereço: Rua dos Animais, 123 - Cidade</p>
+                <p>Telefone: (11) 1234-5678</p>
+                <p>Email: contato@melhoramigo.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Petshop Melhor Amigo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/02_Produtos.js"></script>
+</body>
+</html>
