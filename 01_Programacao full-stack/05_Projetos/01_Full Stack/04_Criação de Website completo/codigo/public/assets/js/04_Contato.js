@@ -1,4 +1,3 @@
-// Função para o menu de navegação responsivo
 document.addEventListener('DOMContentLoaded', function () {
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -7,15 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.toggle('active');
     });
 
-    // Função para formatar o número de telefone
+    
     function formatarTelefone(telefone) {
-        // Remove todos os caracteres não numéricos
+        
         const numeros = telefone.replace(/\D/g, '');
 
-        // Limita o número de dígitos a 11
         const telefoneLimitado = numeros.slice(0, 11);
 
-        // Aplica a máscara (99) 99999-9999
         if (telefoneLimitado.length <= 10) {
             return telefoneLimitado.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
         } else {
@@ -23,28 +20,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Aplica a formatação enquanto o usuário digita
+    
     const telefoneInput = document.getElementById('telefone');
     telefoneInput.addEventListener('input', function () {
-        // Formata o telefone
+        
         this.value = formatarTelefone(this.value);
     });
 
-    // Impede a digitação de caracteres não numéricos
+   
     telefoneInput.addEventListener('keydown', function (event) {
-        // Permite apenas números, Backspace, Delete, Tab e setas
+        
         if (
-            !/[0-9]/.test(event.key) && // Não é um número
-            event.key !== 'Backspace' && // Não é Backspace
-            event.key !== 'Delete' && // Não é Delete
-            event.key !== 'Tab' && // Não é Tab
-            !event.key.startsWith('Arrow') // Não é uma seta
+            !/[0-9]/.test(event.key) && 
+            event.key !== 'Backspace' && 
+            event.key !== 'Delete' && 
+            event.key !== 'Tab' && 
+            !event.key.startsWith('Arrow') 
         ) {
-            event.preventDefault(); // Bloqueia a tecla
+            event.preventDefault(); 
         }
     });
 
-    // Validação em tempo real
+    
     const nomeInput = document.getElementById('nome');
     const emailInput = document.getElementById('email');
     const mensagemInput = document.getElementById('mensagem');
@@ -54,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function () {
     telefoneInput.addEventListener('input', validateTelefone);
     mensagemInput.addEventListener('input', validateMensagem);
 
-    // Validação do Formulário de Contato
+    
     const form = document.querySelector('.contact-form');
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Impede o envio padrão do formulário
+        event.preventDefault(); 
 
-        // Validação dos campos
+        
         const nome = nomeInput.value.trim();
         const email = emailInput.value.trim();
         const telefone = telefoneInput.value.trim();
@@ -68,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let isValid = true;
 
-        // Validação do Nome
+        
         if (nome === '') {
             isValid = false;
             showError(nomeInput, 'Por favor, insira seu nome.');
@@ -76,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError(nomeInput);
         }
 
-        // Validação do E-mail
+        
         if (email === '' || !validateEmailFormat(email)) {
             isValid = false;
             showError(emailInput, 'Por favor, insira um e-mail válido.');
@@ -84,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError(emailInput);
         }
 
-        // Validação do Telefone
+        
         if (telefone === '' || !validatePhoneFormat(telefone)) {
             isValid = false;
             showError(telefoneInput, 'Por favor, insira um telefone válido.');
@@ -92,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError(telefoneInput);
         }
 
-        // Validação da Mensagem
+        
         if (mensagem === '') {
             isValid = false;
             showError(mensagemInput, 'Por favor, insira sua mensagem.');
@@ -100,25 +97,25 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError(mensagemInput);
         }
 
-        // Se todos os campos forem válidos, envia o formulário
+        
         if (isValid) {
             sendFormData({ nome, email, telefone, mensagem });
         }
     });
 
-    // Função para validar e-mail
+    
     function validateEmailFormat(email) {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     }
 
-    // Função para validar telefone (formato brasileiro com máscara)
+    
     function validatePhoneFormat(phone) {
         const regex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
         return regex.test(phone);
     }
 
-    // Função para exibir mensagens de erro
+    
     function showError(input, message) {
         const formGroup = input.parentElement;
         const errorMessage = formGroup.querySelector('.error-message') || document.createElement('span');
@@ -128,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         input.classList.add('error');
     }
 
-    // Função para limpar mensagens de erro
+    
     function clearError(input) {
         const formGroup = input.parentElement;
         const errorMessage = formGroup.querySelector('.error-message');
@@ -138,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
         input.classList.remove('error');
     }
 
-    // Função para enviar dados do formulário
+    
     function sendFormData(data) {
         fetch('http://localhost:3000/contatos', {
             method: 'POST',
@@ -156,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Função para exibir mensagem de sucesso
+    
     function showSuccess(message) {
         const successMessage = document.createElement('div');
         successMessage.className = 'success-message';
@@ -165,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => successMessage.remove(), 3000);
     }
 
-    // Funções de validação em tempo real
+    
     function validateNome() {
         if (nomeInput.value.trim() === '') {
             showError(nomeInput, 'Por favor, insira seu nome.');

@@ -1,4 +1,3 @@
-// 01_Inicio.js
 
 // Função para o menu de navegação responsivo
 document.addEventListener('DOMContentLoaded', function() {

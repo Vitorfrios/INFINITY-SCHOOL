@@ -2,21 +2,27 @@
 DIGITAR npm start NO TERMINAL PARA INICIALIZAR O JSON SERVER
 npm start 
 */
+
 // Inicialização do Lightbox
 const inicializarLightbox = () => {
     lightbox.option({
-        resizeDuration: 200, // Duração da animação de redimensionamento
-        wrapAround: true, // Permite navegar circularmente pelas imagens
-        showImageNumberLabel: false, // Oculta o número da imagem (ex: "Imagem 1 de 6")
-        positionFromTop: 100, // Posição do lightbox a partir do topo da página
+        resizeDuration: 200, 
+        wrapAround: true, 
+        showImageNumberLabel: false, 
+        positionFromTop: 100, 
     });
 };
 
-// Fechar o Lightbox ao clicar fora da imagem
-const fecharLightboxFora = () => {
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('lb-overlay')) {
-            lightbox.close();
+
+
+const prevenirAberturaDireta = () => {
+    const galeriaContainer = document.querySelector('.galeria-container');
+
+    galeriaContainer.addEventListener('click', (e) => {
+        
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault(); 
+            lightbox.start(e.target.parentElement); 
         }
     });
 };
@@ -25,7 +31,9 @@ const fecharLightboxFora = () => {
 document.addEventListener('DOMContentLoaded', () => {
     inicializarLightbox();
     fecharLightboxFora();
+    prevenirAberturaDireta();
 });
+
 // Função para o menu de navegação responsivo
 document.addEventListener('DOMContentLoaded', function () {
     const mobileMenu = document.getElementById('mobile-menu');
@@ -40,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const galeriaContainer = document.querySelector('.galeria-container');
 
         try {
-            // Busca 6 imagens aleatórias de cachorros
+            
             for (let i = 0; i < 6; i++) {
                 const response = await fetch('https://dog.ceo/api/breeds/image/random');
                 const data = await response.json();
@@ -48,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.status === 'success') {
                     const imageUrl = data.message;
 
-                    // Cria o elemento <a> e <img> para a Lightbox
                     const link = document.createElement('a');
                     link.href = imageUrl;
                     link.setAttribute('data-lightbox', 'galeria');
@@ -67,6 +74,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Chama a função para buscar e adicionar as imagens
     fetchDogImages();
 });

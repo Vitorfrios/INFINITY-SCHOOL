@@ -15,7 +15,7 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     padding: 1rem 2rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -26,7 +26,7 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(76, 175, 80, 0.9); /* Verde com transparência */
+    background-color: rgba(76, 175, 80, 0.9); 
     padding: 0.5rem 2rem;
 }
 
@@ -75,7 +75,7 @@ header.scrolled {
 }
 
 .nav-links a:hover {
-    color: #f1c40f; /* Amarelo para hover */
+    color: #f1c40f; 
     transform: translateY(-3px);
 }
 
@@ -103,7 +103,7 @@ header.scrolled {
 .produtos h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -117,7 +117,7 @@ header.scrolled {
 }
 
 .filtro-btn {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -129,11 +129,11 @@ header.scrolled {
 }
 
 .filtro-btn.active {
-    background-color: #45a049; /* Verde mais escuro */
+    background-color: #45a049; 
 }
 
 .filtro-btn:hover {
-    background-color: #45a049; /* Verde mais escuro */
+    background-color: #45a049; 
     transform: translateY(-3px);
 }
 
@@ -174,7 +174,7 @@ header.scrolled {
 .produto-card h3 {
     font-size: 1.5rem;
     margin: 1rem 0 0.5rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .produto-card p {
@@ -185,7 +185,7 @@ header.scrolled {
 }
 
 .info-btn {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -197,7 +197,7 @@ header.scrolled {
 }
 
 .info-btn:hover {
-    background-color: #45a049; /* Verde mais escuro */
+    background-color: #45a049; 
     transform: translateY(-3px);
 }
 
@@ -237,13 +237,13 @@ header.scrolled {
 }
 
 .close-modal:hover {
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .modal-content h3 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .modal-content p {
@@ -253,7 +253,7 @@ header.scrolled {
 }
 
 .modal-content .cta-button {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -264,7 +264,7 @@ header.scrolled {
 }
 
 .modal-content .cta-button:hover {
-    background-color: #45a049; /* Verde mais escuro */
+    background-color: #45a049; 
     transform: translateY(-3px);
 }
 
@@ -289,7 +289,7 @@ footer {
 
 .footer-section h3 {
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .footer-section a {
@@ -300,7 +300,7 @@ footer {
 }
 
 .footer-section a:hover {
-    color: #f1c40f; /* Amarelo */
+    color: #f1c40f; 
 }
 
 .footer-bottom {
@@ -318,7 +318,7 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #4CAF50; /* Verde */
+        background-color: #4CAF50; 
     }
 
     .nav-links.active {

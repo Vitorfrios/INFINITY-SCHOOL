@@ -15,7 +15,7 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     padding: 1rem 2rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -26,7 +26,7 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(76, 175, 80, 0.9); /* Verde com transparência */
+    background-color: rgba(76, 175, 80, 0.9); 
     padding: 0.5rem 2rem;
 }
 
@@ -75,7 +75,7 @@ header.scrolled {
 }
 
 .nav-links a:hover {
-    color: #f1c40f; /* Amarelo para hover */
+    color: #f1c40f; 
     transform: translateY(-3px);
 }
 
@@ -103,7 +103,7 @@ header.scrolled {
 .galeria h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -179,7 +179,7 @@ footer {
 
 .footer-section h3 {
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .footer-section a {
@@ -190,7 +190,7 @@ footer {
 }
 
 .footer-section a:hover {
-    color: #f1c40f; /* Amarelo */
+    color: #f1c40f; 
 }
 
 .footer-bottom {
@@ -208,7 +208,7 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #4CAF50; /* Verde */
+        background-color: #4CAF50; 
     }
 
     .nav-links.active {

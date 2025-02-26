@@ -26,7 +26,7 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(76, 175, 80, 0.9); /* Verde com transparência */
+    background-color: rgba(76, 175, 80, 0.9); 
     padding: 0.5rem 2rem;
 }
 
@@ -75,7 +75,7 @@ header.scrolled {
 }
 
 .nav-links a:hover {
-    color: #f1c40f; /* Amarelo para hover */
+    color: #f1c40f; 
     transform: translateY(-3px);
 }
 
@@ -114,7 +114,7 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Overlay escuro */
+    background: rgba(0, 0, 0, 0.5); 
 }
 
 .hero-content {
@@ -146,7 +146,7 @@ header.scrolled {
 }
 
 .cta-button {
-    background-color: #f1c40f; /* Amarelo */
+    background-color: #f1c40f; 
     color: white;
     padding: 1rem 2.5rem;
     text-decoration: none;
@@ -157,7 +157,7 @@ header.scrolled {
 }
 
 .cta-button:hover {
-    background-color: #e67e22; /* Laranja */
+    background-color: #e67e22; 
     transform: scale(1.1);
 }
 
@@ -176,7 +176,7 @@ header.scrolled {
 }
 
 .scroll-link:hover {
-    color: #f1c40f; /* Amarelo */
+    color: #f1c40f; 
     transform: translateY(3px);
 }
 
@@ -191,7 +191,7 @@ header.scrolled {
 .destaque h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -213,7 +213,7 @@ header.scrolled {
 .servicos h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -241,7 +241,7 @@ header.scrolled {
 
 .servico-card i {
     font-size: 2.5rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
@@ -271,7 +271,7 @@ header.scrolled {
 .alimentacao h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     animation: fadeIn 1s ease-in-out;
 }
 
@@ -316,7 +316,7 @@ header.scrolled {
 .alimentacao-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .alimentacao-card p {
@@ -433,14 +433,14 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(76, 175, 80, 0.05); /* Verde claro com transparência */
+    background: rgba(76, 175, 80, 0.05); 
     z-index: 1;
 }
 
 .depoimentos h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     animation: float 3s ease-in-out infinite;
 }
 
@@ -456,7 +456,7 @@ header.scrolled {
 }
 
 .depoimento-card {
-    flex: 1 1 30%; /* Ajuste conforme necessário */
+    flex: 1 1 30%;
     margin: 10px;
     text-align: center;
 }
@@ -486,7 +486,7 @@ header.scrolled {
     height: 150px;
     border-radius: 50%;
     margin-bottom: 1rem;
-    border: 3px solid #4CAF50; /* Verde */
+    border: 3px solid #4CAF50; 
     transition: transform 0.3s ease;
 }
 
@@ -508,13 +508,13 @@ header.scrolled {
 
 .depoimento-card span {
     font-size: 0.9rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .depoimento-card:hover span {
-    color: #45a049; /* Verde mais escuro */
+    color: #45a049; 
 }
 
 /* Seção da Equipe */
@@ -680,7 +680,7 @@ header.scrolled {
 .faq-item h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .faq-item p {
@@ -718,7 +718,7 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(76, 175, 80, 0.05); /* Verde claro com transparência */
+    background: rgba(76, 175, 80, 0.05); 
     z-index: 1;
 }
 
@@ -730,7 +730,7 @@ header.scrolled {
 .galeria h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
     animation: float 3s ease-in-out infinite;
 }
 
@@ -791,7 +791,7 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(76, 175, 80, 0.8); /* Verde com transparência */
+    background: rgba(76, 175, 80, 0.8); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -829,7 +829,7 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(76, 175, 80, 0.05); /* Verde claro com transparência */
+    background: rgba(76, 175, 80, 0.05); 
     z-index: 1;
 }
 
@@ -841,7 +841,7 @@ header.scrolled {
 .promocoes h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50;
     animation: float 3s ease-in-out infinite;
 }
 
@@ -894,7 +894,7 @@ header.scrolled {
 .promocao-card h3 {
     font-size: 1.5rem;
     margin: 1rem 0 0.5rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50; 
 }
 
 .promocao-card p {
@@ -910,7 +910,7 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(76, 175, 80, 0.8); /* Verde com transparência */
+    background: rgba(76, 175, 80, 0.8); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -957,7 +957,7 @@ footer {
 
 .footer-section h3 {
     margin-bottom: 1rem;
-    color: #4CAF50; /* Verde */
+    color: #4CAF50;
 }
 
 .footer-section a {
@@ -968,7 +968,7 @@ footer {
 }
 
 .footer-section a:hover {
-    color: #f1c40f; /* Amarelo */
+    color: #f1c40f; 
 }
 
 .footer-bottom {
@@ -976,7 +976,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/*Animação geral */
 
 
 /* Responsividade */
@@ -989,7 +988,7 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #4CAF50; /* Verde */
+        background-color: #4CAF50; 
     }
 
     .nav-links.active {

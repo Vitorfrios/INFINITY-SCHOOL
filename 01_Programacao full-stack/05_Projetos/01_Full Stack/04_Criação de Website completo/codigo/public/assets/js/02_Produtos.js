@@ -5,14 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     filtroBtns.forEach(btn => {
         btn.addEventListener('click', function () {
-            // Remove a classe 'active' de todos os botões
             filtroBtns.forEach(b => b.classList.remove('active'));
-            // Adiciona a classe 'active' ao botão clicado
+            
             this.classList.add('active');
 
             const categoria = this.getAttribute('data-categoria');
 
-            // Filtra os produtos
+            
             produtoCards.forEach(card => {
                 const cardCategoria = card.getAttribute('data-categoria');
                 if (categoria === 'todos' || cardCategoria === categoria) {
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     infoBtns.forEach(btn => {
         btn.addEventListener('click', function () {
             const produto = this.getAttribute('data-produto');
-            // Aqui você pode adicionar lógica para buscar detalhes do produto
+            
             modalTitle.textContent = this.parentElement.querySelector('h3').textContent;
             modalDesc.textContent = this.parentElement.querySelector('p').textContent;
             modal.style.display = 'block';
