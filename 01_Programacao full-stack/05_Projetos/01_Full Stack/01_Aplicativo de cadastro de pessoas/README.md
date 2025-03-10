@@ -37,6 +37,25 @@ As dependências necessárias para o código funcionar serão baixadas automatic
 
 - Os administradores podem acessar a página de gerenciamento de inscrições através de um login seguro.
 - O login requer um nome de usuário e senha válidos, que são verificados no banco de dados.
+- ```json
+    "adm": [
+      {
+        "id": 1,
+        "login": "admin1",
+        "senha": "senha123"
+      },
+      {
+        "id": 2,
+        "login": "admin2",
+        "senha": "seguranca456"
+      },
+      {
+        "id": 3,
+        "login": "admin3",
+        "senha": "admin@789"
+      }
+    ]
+  ```
 
 ### **4. Gerenciamento de Inscrições**
 
